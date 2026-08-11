@@ -15,5 +15,5 @@ else:
         "Rooster (鸡 / Jī)",
         "Dog (狗 / Gǒu)",
         "Pig (猪 / Zhū)"]
-    zodiac = zodiac_signs[(birth_year - 1900) % 12]
-    print("Your Chinese Zodiac Sign is:", zodiac)
+    Zodiac = zodiac_signs[(birth_year - 1900) % 12]
+    print("Your Chinese Zodiac Sign is:", Zodiac)
