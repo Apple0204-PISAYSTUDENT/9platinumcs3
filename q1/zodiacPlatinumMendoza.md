@@ -59,3 +59,7 @@ else:
     zodiac = zodiac_signs[(birth_year - 1900) % 12]
 
     print("Your Chinese Zodiac Sign is:", zodiac)
+```
+<img width="2048" height="1536" alt="be8c92b1-1be9-4090-bff9-a64f5a61208c" src="https://github.com/user-attachments/assets/8df4b748-921a-47f5-acd6-eac0d5285a78" />
+<img width="2048" height="1536" alt="0de77bdd-486c-42b0-a4d1-58ecd518affe" src="https://github.com/user-attachments/assets/e75af564-4f1e-4958-b42e-7e0beae79488" />
+
