@@ -4,6 +4,7 @@ Section: 9 - Platinum
 Name: Ace Philip Lee T. Mendoza  
 Date: August 12, 2026
 Requirements:
+
 A. Input
 Ask the user to enter a year of birth, using 1900 as the baseline year.
 
