@@ -1,19 +1,18 @@
-<div style="background-image: url('./assets/JPG STORAGE/background.jpg'); background-repeat: repeat; background-size: 300px; padding: 40px; font-family: sans-serif; min-height: 100vh;">
+<div style="background-image: url('https://github.io'); background-repeat: repeat; background-size: 300px; padding: 40px; font-family: sans-serif; min-height: 100vh;">
 
 <div style="background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333333;">
 
+# 9platinumcs3 :octocat:
 
-# 9platinumcs3
-:octocat:Identification
+### 👤 Identification
+* **Name:** Ace Philip Lee T. Mendoza
+* **Section:** 9 - Platinum
+* **Age:** 14 yrs. 
 
-Name: Ace Philip Lee T. Mendoza
-
-Section: 9 - Platinum
-
-Age: 14 yrs. 
-
-Works and Assignments:
+### 📚 Works and Assignments
 1. [Activity 1: Computational Thinking Exercise](q1/ctskillsPlatinumMendoza.md)
 2. [Activity 2: Chinese Zodiac](q1/zodiacPlatinumMendoza.md)
-3. 
 
+</div>
+
+</div>
