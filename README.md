@@ -1,4 +1,4 @@
-<div style="background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;" markdown="1">
+<div style="background-image: url('https://github.com'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;" markdown="1">
 
 <div style="background-color: rgba(255, 255, 255, 0.90); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333333;" markdown="1">
 
@@ -13,8 +13,9 @@
 ### 📚 Works and Assignments
 1. [Activity 1: Computational Thinking Exercise](q1/ctskillsPlatinumMendoza.md)
 2. [Activity 2: Chinese Zodiac](q1/zodiacPlatinumMendoza.md)
-3. 
 
+</div>
+</div>
 </div>
 </div>
 </div>
