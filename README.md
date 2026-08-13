@@ -1,3 +1,8 @@
+<div style="background-image: url('./assets/JPG STORAGE/background.jpg'); background-repeat: repeat; background-size: 300px; padding: 40px; font-family: sans-serif; min-height: 100vh;">
+
+<div style="background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333333;">
+
+
 # 9platinumcs3
 :octocat:Identification
 
@@ -12,7 +17,3 @@ Works and Assignments:
 2. [Activity 2: Chinese Zodiac](q1/zodiacPlatinumMendoza.md)
 3. 
 
-
-<div style="background-image: url('https://github.com'); background-repeat: repeat; background-size: 300px; padding: 40px; font-family: sans-serif; min-height: 100vh;">
-
-<div style="background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333333;">
