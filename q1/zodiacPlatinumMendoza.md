@@ -1,24 +1,24 @@
 **Chinese Zodiac Code Exercise**
 
-Section: 9 - Platinum  
-Name: Ace Philip Lee T. Mendoza  
-Date: August 12, 2026
+**Section:** 9 - Platinum  
+**Name:** Ace Philip Lee T. Mendoza  
+**Date:** August 12, 2026
 
-Requirements:
+**Requirements:**
 
-A. Input
+**A. Input**
 Ask the user to enter a year of birth, using 1900 as the baseline year.
 
-B. Input Validation
+**B. Input Validation**
 The year entered by the user must not be earlier than 1900.
 
-C. Invalid Input
+**C. Invalid Input**
 If the user enters a year earlier than 1900, it will display an appropriate error message and stop the program.
 
-D. Chinese Zodiac
+**D. Chinese Zodiac**
 Determine the Chinese Zodiac sign based on the year of birth. The zodiac signs repeat every 12 years, starting with Rat in 1900.
 
-The order is:
+**The order is:**
 1. Rat (鼠 / Shǔ)
 2. Ox (牛 / Niú)
 3. Tiger (虎 / Hǔ)
@@ -32,9 +32,10 @@ The order is:
 11. Dog (狗 / Gǒu)
 12. Pig (猪 / Zhū)
 
-E. Year Consideration
+**E. Year Consideration**
 Only the year of birth should be considered.
-Python Code
+
+**Python Code:**
 
 ```python
 birth_year = int(input("Enter your birth year: "))
