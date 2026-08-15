@@ -8,7 +8,7 @@
 * **Name:** Ace Philip Lee T. Mendoza
 * **Section:** 9 - Platinum
 * **Age:** 14 yrs.
-* **Favorite thing:** Cats
+* **Favorite things:** Cats, Coffee, and Sleeping👍
 
 ### 📚 Works and Assignments
 1. [Activity 1: Computational Thinking Exercise](q1/ctskillsPlatinumMendoza.md)
