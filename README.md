@@ -1,6 +1,23 @@
 <div style="background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;" markdown="1">
 
 <div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;" markdown="1">
+  
+/* Added the dot before the class name */
+.assignment-card {
+    background-color: #FAEDCD; /* Cream background */
+    border-left: 5px solid #4A3525; /* Dark espresso accent bar */
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.assignment-card:hover {
+    transform: translateY(-4px); /* Floating effect */
+    box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15); /* Coffee colored shadow */
+}
+
+
 
 # 9platinumcs3 :octocat:
 
