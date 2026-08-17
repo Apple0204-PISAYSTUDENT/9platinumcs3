@@ -14,18 +14,19 @@
 
 ### 📚 Works and Assignments
 
-<!-- Added target="_blank" to open in a new tab -->
-<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card" target="_blank">
-    <h3 style="margin: 0; padding: 0;">📚 Activity 1</h3>
-    <p style="margin: 5px 0 0 0; padding: 0;">Computational Thinking Exercise</p>
+<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
+<a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">📚 Activity 1</h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Computational Thinking Exercise</p>
 </a>
 
-<a href="q1/zodiacPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;" target="_blank">
-    <h3 style="margin: 0; padding: 0;">🔮 Activity 2</h3>
-    <p style="margin: 5px 0 0 0; padding: 0;">Chinese Zodiac Project</p>
+<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
+<a href="q1/zodiacPlatinumMendoza.html" class="assignment-card" style="margin-top: 15px;">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">🔮 Activity 2</h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
 </a>
 
-
+["jsjsueeueueueueueuu'](Link)
 </div>
 
 </div>
