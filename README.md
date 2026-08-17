@@ -8,8 +8,8 @@
         border-left: 5px solid #4A3525; 
         border-radius: 8px; 
         padding: 15px; 
-        text-decoration: none; /* Removes automatic link underlines */
-        display: block;        /* Makes the entire container clickable */
+        text-decoration: none; 
+        display: block;        
         color: #333333;
         transition: all 0.3s ease-in-out; 
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
