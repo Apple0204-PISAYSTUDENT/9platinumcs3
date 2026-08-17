@@ -33,12 +33,22 @@
     <li><strong>Favorite things:</strong> Cats, Coffee, and Sleeping👍</li>
 </ul>
 
-**Works and Assignments (Access via GitHub)**
-1. [Activity 1: Computational Thinking Exercise](q1/ctskillsPlatinumMendoza.md)
-2. [Activity 2: Chinese Zodiac Project](q1/zodiacPlatinumMendoza.md)
+<h2>Works and Assignments (Access via GitHub)</h2>
 
-**Link For Pages: https://apple0204-pisaystudent.github.io/9platinumcs3/**
+<ol>
+    <li><a href="/9platinumcs3/q1/ctskillsPlatinumMendoza.html">
+        Activity 1: Computational Thinking Exercise
+    </a></li>
 
+    <li><a href="/9platinumcs3/q1/zodiacPlatinumMendoza.html">
+        Activity 2: Chinese Zodiac Project
+    </a></li>
+</ol>
+
+<p>
+    <strong>Link For Pages:</strong>
+    https://apple0204-pisaystudent.github.io/9platinumcs3/
+</p>
 <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">📚 Works and Assignments</h3>
 
 <a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
