@@ -14,15 +14,17 @@
 
 ### 📚 Works and Assignments
 
-<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card">
+<!-- Added target="_blank" to open in a new tab -->
+<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card" target="_blank">
     <h3 style="margin: 0; padding: 0;">📚 Activity 1</h3>
     <p style="margin: 5px 0 0 0; padding: 0;">Computational Thinking Exercise</p>
 </a>
 
-<a href="q1/zodiacPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;">
+<a href="q1/zodiacPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;" target="_blank">
     <h3 style="margin: 0; padding: 0;">🔮 Activity 2</h3>
     <p style="margin: 5px 0 0 0; padding: 0;">Chinese Zodiac Project</p>
 </a>
+
 
 </div>
 
