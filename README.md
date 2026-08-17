@@ -1,6 +1,6 @@
-<div style="background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;">
+<div style="background-image: url('https://github.com'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;" markdown="1">
 
-<div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;">
+<div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;" markdown="1">
   
 <style> 
     .assignment-card { 
@@ -8,8 +8,8 @@
         border-left: 5px solid #4A3525; 
         border-radius: 8px; 
         padding: 15px; 
-        text-decoration: none; /* Removes automatic link underlines */
-        display: block;        /* Makes the entire container clickable */
+        text-decoration: none;
+        display: block;
         color: #333333;
         transition: all 0.3s ease-in-out; 
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
@@ -21,31 +21,24 @@
     }
 </style>
 
-<!-- Main Header -->
-<h1 style="margin-top: 0;">9platinumcs3 <img src="https://githubassets.com" width="30" height="30" style="vertical-align: middle;" alt="octocat"></h1>
+# 9platinumcs3 :octocat:
 
-<!-- Identification Section -->
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">👤 Identification</h3>
-<ul style="list-style-type: none; padding-left: 5px; line-height: 1.8;">
-    <li><strong>Name:</strong> Ace Philip Lee T. Mendoza</li>
-    <li><strong>Section:</strong> 9 - Platinum</li>
-    <li><strong>Age:</strong> 14 yrs.</li>
-    <li><strong>Favorite things:</strong> Cats, Coffee, and Sleeping👍</li>
-</ul>
+### 👤 Identification
+* **Name:** Ace Philip Lee T. Mendoza
+* **Section:** 9 - Platinum
+* **Age:** 14 yrs.
+* **Favorite things:** Cats, Coffee, and Sleeping👍
 
-<!-- Works Section -->
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">📚 Works and Assignments</h3>
+### 📚 Works and Assignments
 
-<!-- Card 1: Now fully links to your actual repository file -->
-<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;">
-    <h4 style="margin: 0; color: #4A3525;">📚 Activity 1</h4>
-    <p style="margin: 5px 0 0 0;">Computational Thinking Exercise</p>
+<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card">
+    <h3 style="margin: 0; padding: 0;">📚 Activity 1</h3>
+    <p style="margin: 5px 0 0 0; padding: 0;">Computational Thinking Exercise</p>
 </a>
 
-<!-- Card 2: Now fully links to your actual repository file -->
 <a href="q1/zodiacPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;">
-    <h4 style="margin: 0; color: #4A3525;">🔮 Activity 2</h4>
-    <p style="margin: 5px 0 0 0;">Chinese Zodiac Project</p>
+    <h3 style="margin: 0; padding: 0;">🔮 Activity 2</h3>
+    <p style="margin: 5px 0 0 0; padding: 0;">Chinese Zodiac Project</p>
 </a>
 
 </div>
