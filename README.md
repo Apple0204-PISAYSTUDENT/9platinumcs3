@@ -39,7 +39,6 @@
     <li><a href="/9platinumcs3/q1/ctskillsPlatinumMendoza.html">
         Activity 1: Computational Thinking Exercise
     </a></li>
-
     <li><a href="/9platinumcs3/q1/zodiacPlatinumMendoza.html">
         Activity 2: Chinese Zodiac Project
     </a></li>
