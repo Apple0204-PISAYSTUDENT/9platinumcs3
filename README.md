@@ -2,10 +2,9 @@
 
 <div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;" markdown="1">
   
-/* Added the dot before the class name */
 .assignment-card {
-    background-color: #FAEDCD; /* Cream background */
-    border-left: 5px solid #4A3525; /* Dark espresso accent bar */
+    background-color: #FAEDCD;
+    border-left: 5px solid #4A3525;
     border-radius: 8px;
     padding: 15px;
     transition: all 0.3s ease-in-out;
@@ -13,8 +12,8 @@
 }
 
 .assignment-card:hover {
-    transform: translateY(-4px); /* Floating effect */
-    box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15); /* Coffee colored shadow */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15);
 }
 
 
