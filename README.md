@@ -26,7 +26,6 @@
     <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
 </a>
 
-["jsjsueeueueueueueuu'](Link)
 </div>
 
 </div>
