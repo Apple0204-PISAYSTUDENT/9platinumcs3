@@ -49,7 +49,6 @@
     <h3 style="margin: 0; padding: 0; color: #4A3525;">🔮 Activity 2</h3>
     <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
 </a>
-</a>
 
 </div>
 
