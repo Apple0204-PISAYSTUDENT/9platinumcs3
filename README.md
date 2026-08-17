@@ -23,10 +23,8 @@
 </style>
 </details>
 
-<!-- Main Header -->
 <h1 style="margin-top: 0;">9platinumcs3 <img src="https://githubassets.com" width="30" height="30" style="vertical-align: middle;" alt="octocat"></h1>
 
-<!-- Identification Section -->
 <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">👤 Identification</h3>
 <ul style="list-style-type: none; padding-left: 5px; line-height: 1.8;">
     <li><strong>Name:</strong> Ace Philip Lee T. Mendoza</li>
@@ -39,17 +37,15 @@
 1. [Activity 1: Computational Thinking Exercise](q1/ctskillsPlatinumMendoza.md)
 2. [Activity 2: Chinese Zodiac Project](q1/zodiacPlatinumMendoza.md)
 
+**Link For Pages: https://apple0204-pisaystudent.github.io/9platinumcs3/**
 
-<!-- Works Section -->
 <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">📚 Works and Assignments</h3>
 
-<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
 <a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
     <h3 style="margin: 0; padding: 0; color: #4A3525;">📚 Activity 1</h3>
     <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Computational Thinking Exercise</p>
 </a>
 
-<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
 <a href="q1/zodiacPlatinumMendoza.html" class="assignment-card" style="margin-top: 15px;">
     <h3 style="margin: 0; padding: 0; color: #4A3525;">🔮 Activity 2</h3>
     <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
