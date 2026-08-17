@@ -2,7 +2,6 @@
 
 <div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;">
 
-<details>
 <style> 
     .assignment-card { 
         background-color: #FAEDCD; 
@@ -21,11 +20,13 @@
         box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15); 
     }
 </style>
-</details>
 
-<h1 style="margin-top: 0;">9platinumcs3 <img src="https://githubassets.com" width="30" height="30" style="vertical-align: middle;" alt="octocat"></h1>
+<h1 style="margin-top: 0;">9platinumcs3</h1>
 
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">👤 Identification</h3>
+<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">
+    👤 Identification
+</h3>
+
 <ul style="list-style-type: none; padding-left: 5px; line-height: 1.8;">
     <li><strong>Name:</strong> Ace Philip Lee T. Mendoza</li>
     <li><strong>Section:</strong> 9 - Platinum</li>
@@ -33,31 +34,26 @@
     <li><strong>Favorite things:</strong> Cats, Coffee, and Sleeping👍</li>
 </ul>
 
-<h2>Works and Assignments (Access via GitHub)</h2>
-
-<ol>
-    <li><a href="/9platinumcs3/q1/ctskillsPlatinumMendoza.html">
-        Activity 1: Computational Thinking Exercise
-    </a></li>
-    <li><a href="/9platinumcs3/q1/zodiacPlatinumMendoza.html">
-        Activity 2: Chinese Zodiac Project
-    </a></li>
-</ol>
-
-<p>
-    <strong>Link For Pages:</strong>
-    https://apple0204-pisaystudent.github.io/9platinumcs3/
-</p>
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">📚 Works and Assignments</h3>
+<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">
+    📚 Works and Assignments
+</h3>
 
 <a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">📚 Activity 1</h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Computational Thinking Exercise</p>
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">
+        📚 Activity 1
+    </h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
+        Computational Thinking Exercise
+    </p>
 </a>
 
 <a href="q1/zodiacPlatinumMendoza.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">🔮 Activity 2</h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">
+        🔮 Activity 2
+    </h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
+        Chinese Zodiac Project
+    </p>
 </a>
 
 </div>
