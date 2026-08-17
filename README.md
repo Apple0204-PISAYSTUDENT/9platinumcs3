@@ -36,16 +36,17 @@
 <!-- Works Section -->
 <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">📚 Works and Assignments</h3>
 
-<!-- Card 1: Now fully links to your actual repository file -->
-<a href="q1/ctskillsPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;">
-    <h4 style="margin: 0; color: #4A3525;">📚 Activity 1</h4>
-    <p style="margin: 5px 0 0 0;">Computational Thinking Exercise</p>
+<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
+<a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">📚 Activity 1</h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Computational Thinking Exercise</p>
 </a>
 
-<!-- Card 2: Now fully links to your actual repository file -->
-<a href="q1/zodiacPlatinumMendoza.md" class="assignment-card" style="margin-top: 15px;">
-    <h4 style="margin: 0; color: #4A3525;">🔮 Activity 2</h4>
-    <p style="margin: 5px 0 0 0;">Chinese Zodiac Project</p>
+<!-- Changed extension to .html so GitHub loads it directly inside your white theme layout -->
+<a href="q1/zodiacPlatinumMendoza.html" class="assignment-card" style="margin-top: 15px;">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">🔮 Activity 2</h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">Chinese Zodiac Project</p>
+</a>
 </a>
 
 </div>
