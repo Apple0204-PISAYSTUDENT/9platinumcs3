@@ -1,11 +1,16 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cat Clicker 🐱</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -14,133 +19,910 @@
             background-position: center;
             background-attachment: fixed;
             font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: #333333;
         }
 
-        .game-container {
-            background-color: rgba(255, 255, 255, 0.92);
-            padding: 40px;
-            border-radius: 15px;
+        .container {
             width: 90%;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
         }
 
-        #catEmoji {
-            font-size: 100px;
-            margin: 15px;
+        h1 {
+            text-align: center;
+            color: #4A3525;
+        }
+
+        h2 {
+            color: #4A3525;
+        }
+
+        .game-area {
+            text-align: center;
+            background: #FAEDCD;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        #cat {
+            font-size: 110px;
             cursor: pointer;
+            user-select: none;
             transition: transform 0.1s;
         }
 
-        #catEmoji:active {
-            transform: scale(0.9);
+        #cat:active {
+            transform: scale(0.85);
         }
 
-        #catMood {
+        #mood {
             font-size: 18px;
+            min-height: 25px;
         }
 
         #score {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             color: #4A3525;
         }
 
-        #catButton {
+        .stat {
+            display: inline-block;
+            background: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .shop,
+        .achievements,
+        .stats {
+            margin-top: 25px;
+        }
+
+        .shop-item {
+            background: #FAEDCD;
+            border-left: 5px solid #4A3525;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .shop-item button,
+        .small-button {
             background: #4A3525;
             color: white;
             border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
+            padding: 8px 14px;
+            border-radius: 7px;
             cursor: pointer;
-            font-size: 18px;
-            transition: transform 0.1s, background 0.2s;
         }
 
-        #catButton:hover {
-            background: #6A4A35;
+        button:hover {
+            opacity: 0.85;
         }
 
-        #catButton:active {
-            transform: scale(0.95);
+        button:disabled {
+            background: #999999;
+            cursor: not-allowed;
         }
 
-        .back-button {
+        .achievement {
             display: inline-block;
-            margin-top: 25px;
+            width: 48%;
+            margin: 1%;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eeeeee;
+        }
+
+        .unlocked {
+            background: #FAEDCD;
+            border-left: 5px solid #4A3525;
+        }
+
+        .locked {
+            opacity: 0.45;
+        }
+
+        .event {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fff3cd;
+            display: none;
+        }
+
+        .skin-button {
+            margin: 4px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
             color: #4A3525;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
+        }
+
+        .danger {
+            margin-top: 20px;
+            background: #8B0000;
+        }
+
+        @media (max-width: 600px) {
+            .achievement {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            #cat {
+                font-size: 85px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="game-container">
+<div class="container">
 
-    <h1>🎮 Cat Clicker</h1>
+    <h1>🐱 Cat Clicker</h1>
 
-    <div id="catEmoji">🐱</div>
+    <!-- MAIN GAME -->
+    <div class="game-area">
 
-    <p id="catMood">The cat tolerates your existence.</p>
+        <div id="cat">🐱</div>
 
-    <p>
-        Cat Points:
-        <span id="score">0</span>
-    </p>
+        <p id="mood">
+            The cat tolerates your existence.
+        </p>
 
-    <button id="catButton">
-        Pet the Cat
+        <p>
+            Cat Points:
+            <span id="score">0</span>
+        </p>
+
+        <div>
+            <span class="stat">
+                🖱️ Clicks: <b id="clicks">0</b>
+            </span>
+
+            <span class="stat">
+                ✨ Critical Pets: <b id="criticals">0</b>
+            </span>
+
+            <span class="stat">
+                ⚡ Per Click: <b id="perClick">1</b>
+            </span>
+
+            <span class="stat">
+                🐾 Per Second: <b id="perSecond">0</b>
+            </span>
+        </div>
+
+        <div id="event" class="event"></div>
+
+    </div>
+
+
+    <!-- SHOP -->
+    <div class="shop">
+
+        <h2>🛒 Cat Shop</h2>
+
+        <div class="shop-item">
+            <b>🐟 Fish</b>
+            <p>Increase points per click by +1.</p>
+            <button onclick="buyUpgrade('fish')">
+                Buy - <span id="fishCost">25</span>
+            </button>
+            <span> Owned: <b id="fishOwned">0</b></span>
+        </div>
+
+        <div class="shop-item">
+            <b>☕ Coffee</b>
+            <p>Increase points per click by +5.</p>
+            <button onclick="buyUpgrade('coffee')">
+                Buy - <span id="coffeeCost">100</span>
+            </button>
+            <span> Owned: <b id="coffeeOwned">0</b></span>
+        </div>
+
+        <div class="shop-item">
+            <b>🛏️ Fancy Bed</b>
+            <p>Generate +1 Cat Point every second.</p>
+            <button onclick="buyUpgrade('bed')">
+                Buy - <span id="bedCost">500</span>
+            </button>
+            <span> Owned: <b id="bedOwned">0</b></span>
+        </div>
+
+        <div class="shop-item">
+            <b>🐈 Cat Assistant</b>
+            <p>Generate +10 Cat Points every second.</p>
+            <button onclick="buyUpgrade('assistant')">
+                Buy - <span id="assistantCost">2500</span>
+            </button>
+            <span> Owned: <b id="assistantOwned">0</b></span>
+        </div>
+
+    </div>
+
+
+    <!-- CAT SKINS -->
+    <div class="shop">
+
+        <h2>🎨 Cat Skins</h2>
+
+        <button class="small-button skin-button" onclick="changeSkin('🐱')">
+            🐱 Classic
+        </button>
+
+        <button class="small-button skin-button" onclick="changeSkin('🧡🐱')">
+            🧡 Orange
+        </button>
+
+        <button class="small-button skin-button" onclick="changeSkin('🐈‍⬛')">
+            🐈‍⬛ Black
+        </button>
+
+        <button class="small-button skin-button" onclick="changeSkin('🧙🐱')">
+            🧙 Wizard
+        </button>
+
+        <button class="small-button skin-button" onclick="changeSkin('👽🐱')">
+            👽 Alien
+        </button>
+
+        <button class="small-button skin-button" onclick="changeSkin('🌌🐱')">
+            🌌 Cosmic
+        </button>
+
+    </div>
+
+
+    <!-- ACHIEVEMENTS -->
+    <div class="achievements">
+
+        <h2>🏆 Achievements</h2>
+
+        <div id="achievementList"></div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+    <div class="stats">
+
+        <h2>📊 Statistics</h2>
+
+        <p>Total Cat Points: <b id="totalPoints">0</b></p>
+        <p>Total Clicks: <b id="totalClicks">0</b></p>
+        <p>Critical Pets: <b id="totalCriticals">0</b></p>
+        <p>Upgrades Purchased: <b id="totalUpgrades">0</b></p>
+
+    </div>
+
+
+    <!-- RESET -->
+    <button class="small-button danger" onclick="resetGame()">
+        💀 Reset Everything
     </button>
 
-    <br>
-
-    <a href="index.html" class="back-button">
+    <a href="index.html" class="back">
         ← Back to Portfolio
     </a>
 
 </div>
 
+
 <script>
+
+    // =========================
+    // GAME VARIABLES
+    // =========================
+
     let score = 0;
-    let cat = "🐱";
+    let totalClicks = 0;
+    let criticals = 0;
+    let totalUpgrades = 0;
 
+    let pointsPerClick = 1;
+    let pointsPerSecond = 0;
+
+    let currentSkin = "🐱";
+
+
+    // =========================
+    // SHOP
+    // =========================
+
+    const upgrades = {
+
+        fish: {
+            cost: 25,
+            owned: 0,
+            effect: 1
+        },
+
+        coffee: {
+            cost: 100,
+            owned: 0,
+            effect: 5
+        },
+
+        bed: {
+            cost: 500,
+            owned: 0,
+            effect: 1
+        },
+
+        assistant: {
+            cost: 2500,
+            owned: 0,
+            effect: 10
+        }
+
+    };
+
+
+    // =========================
+    // ACHIEVEMENTS
+    // =========================
+
+    const achievements = [
+
+        {
+            id: "first",
+            name: "🐾 First Pet",
+            description: "Click the cat once.",
+            requirement: () => totalClicks >= 1
+        },
+
+        {
+            id: "starter",
+            name: "😺 Getting Started",
+            description: "Reach 100 Cat Points.",
+            requirement: () => score >= 100
+        },
+
+        {
+            id: "capitalist",
+            name: "💰 Cat Capitalist",
+            description: "Buy your first upgrade.",
+            requirement: () => totalUpgrades >= 1
+        },
+
+        {
+            id: "fish",
+            name: "🐟 Fish Enjoyer",
+            description: "Buy 10 Fish upgrades.",
+            requirement: () => upgrades.fish.owned >= 10
+        },
+
+        {
+            id: "servant",
+            name: "😴 Professional Cat Servant",
+            description: "Reach 10,000 Cat Points.",
+            requirement: () => score >= 10000
+        },
+
+        {
+            id: "chosen",
+            name: "👑 The Chosen One",
+            description: "Reach 100,000 Cat Points.",
+            requirement: () => score >= 100000
+        },
+
+        {
+            id: "god",
+            name: "🌌 Cat God",
+            description: "Reach 1,000,000 Cat Points.",
+            requirement: () => score >= 1000000
+        }
+
+    ];
+
+
+    let unlockedAchievements = [];
+
+
+    // =========================
+    // ELEMENTS
+    // =========================
+
+    const cat = document.getElementById("cat");
     const scoreText = document.getElementById("score");
-    const moodText = document.getElementById("catMood");
-    const catEmoji = document.getElementById("catEmoji");
-    const button = document.getElementById("catButton");
+    const clicksText = document.getElementById("clicks");
+    const criticalsText = document.getElementById("criticals");
+    const perClickText = document.getElementById("perClick");
+    const perSecondText = document.getElementById("perSecond");
+    const moodText = document.getElementById("mood");
 
-    button.addEventListener("click", () => {
+    const eventBox = document.getElementById("event");
 
-        score++;
 
-        scoreText.textContent = score;
+    // =========================
+    // CLICKING
+    // =========================
 
-        if (score >= 100) {
-            cat = "🌌🐱";
-            moodText.textContent = "THE CAT OWNS THE WEBSITE.";
+    cat.addEventListener("click", () => {
+
+        totalClicks++;
+
+        let gained = pointsPerClick;
+
+        // 5% critical chance
+        if (Math.random() < 0.05) {
+
+            gained *= 10;
+
+            criticals++;
+
+            moodText.textContent =
+                "✨ PURRFECT PET! +" + gained + " points!";
+
         }
-        else if (score >= 50) {
-            cat = "🧙🐱";
-            moodText.textContent = "The cat has learned forbidden magic.";
-        }
-        else if (score >= 20) {
-            cat = "😾";
-            moodText.textContent = "The cat demands tribute.";
-        }
-        else if (score >= 10) {
-            cat = "😺";
-            moodText.textContent = "The cat has noticed your existence.";
+
+        else {
+
+            updateMood();
+
         }
 
-        catEmoji.textContent = cat;
+        score += gained;
+
+        updateDisplay();
+        checkAchievements();
+        saveGame();
+
     });
+
+
+    // =========================
+    // MOODS
+    // =========================
+
+    function updateMood() {
+
+        if (score >= 100000) {
+
+            moodText.textContent =
+                "🌌 The cat has transcended reality.";
+
+        }
+
+        else if (score >= 10000) {
+
+            moodText.textContent =
+                "👑 You work for the cat now.";
+
+        }
+
+        else if (score >= 1000) {
+
+            moodText.textContent =
+                "🧙 The cat has learned forbidden magic.";
+
+        }
+
+        else if (score >= 100) {
+
+            moodText.textContent =
+                "😾 The cat demands tribute.";
+
+        }
+
+        else if (score >= 20) {
+
+            moodText.textContent =
+                "😼 The cat is beginning to respect you.";
+
+        }
+
+        else if (score >= 10) {
+
+            moodText.textContent =
+                "😺 The cat has noticed your existence.";
+
+        }
+
+        else {
+
+            moodText.textContent =
+                "🐱 The cat tolerates your existence.";
+
+        }
+
+    }
+
+
+    // =========================
+    // SHOP
+    // =========================
+
+    function buyUpgrade(type) {
+
+        let upgrade = upgrades[type];
+
+        if (score < upgrade.cost) {
+
+            alert("Not enough Cat Points! 🐱");
+
+            return;
+        }
+
+        score -= upgrade.cost;
+
+        upgrade.owned++;
+
+        totalUpgrades++;
+
+        if (type === "fish") {
+            pointsPerClick += 1;
+        }
+
+        if (type === "coffee") {
+            pointsPerClick += 5;
+        }
+
+        if (type === "bed") {
+            pointsPerSecond += 1;
+        }
+
+        if (type === "assistant") {
+            pointsPerSecond += 10;
+        }
+
+        // Increase future cost
+        upgrade.cost =
+            Math.floor(upgrade.cost * 1.5);
+
+        updateDisplay();
+        checkAchievements();
+        saveGame();
+
+    }
+
+
+    // =========================
+    // PASSIVE INCOME
+    // =========================
+
+    setInterval(() => {
+
+        if (pointsPerSecond > 0) {
+
+            score += pointsPerSecond;
+
+            updateDisplay();
+            checkAchievements();
+            saveGame();
+
+        }
+
+    }, 1000);
+
+
+    // =========================
+    // RANDOM EVENTS
+    // =========================
+
+    setInterval(() => {
+
+        if (Math.random() < 0.2) {
+
+            let bonus =
+                Math.floor(Math.random() * 500) + 100;
+
+            score += bonus;
+
+            eventBox.style.display = "block";
+
+            eventBox.textContent =
+                "🐭 A mouse appeared! The cat caught it. +" +
+                bonus +
+                " Cat Points!";
+
+            updateDisplay();
+            saveGame();
+
+            setTimeout(() => {
+
+                eventBox.style.display = "none";
+
+            }, 5000);
+
+        }
+
+    }, 30000);
+
+
+    // =========================
+    // SKINS
+    // =========================
+
+    function changeSkin(newSkin) {
+
+        currentSkin = newSkin;
+
+        cat.textContent = currentSkin;
+
+        saveGame();
+
+    }
+
+
+    // =========================
+    // DISPLAY
+    // =========================
+
+    function updateDisplay() {
+
+        scoreText.textContent =
+            Math.floor(score);
+
+        clicksText.textContent =
+            totalClicks;
+
+        criticalsText.textContent =
+            criticals;
+
+        perClickText.textContent =
+            pointsPerClick;
+
+        perSecondText.textContent =
+            pointsPerSecond;
+
+        document.getElementById("totalPoints").textContent =
+            Math.floor(score);
+
+        document.getElementById("totalClicks").textContent =
+            totalClicks;
+
+        document.getElementById("totalCriticals").textContent =
+            criticals;
+
+        document.getElementById("totalUpgrades").textContent =
+            totalUpgrades;
+
+
+        // Fish
+        document.getElementById("fishCost").textContent =
+            upgrades.fish.cost;
+
+        document.getElementById("fishOwned").textContent =
+            upgrades.fish.owned;
+
+
+        // Coffee
+        document.getElementById("coffeeCost").textContent =
+            upgrades.coffee.cost;
+
+        document.getElementById("coffeeOwned").textContent =
+            upgrades.coffee.owned;
+
+
+        // Bed
+        document.getElementById("bedCost").textContent =
+            upgrades.bed.cost;
+
+        document.getElementById("bedOwned").textContent =
+            upgrades.bed.owned;
+
+
+        // Assistant
+        document.getElementById("assistantCost").textContent =
+            upgrades.assistant.cost;
+
+        document.getElementById("assistantOwned").textContent =
+            upgrades.assistant.owned;
+
+    }
+
+
+    // =========================
+    // ACHIEVEMENTS
+    // =========================
+
+    function checkAchievements() {
+
+        achievements.forEach(achievement => {
+
+            if (
+                achievement.requirement() &&
+                !unlockedAchievements.includes(achievement.id)
+            ) {
+
+                unlockedAchievements.push(
+                    achievement.id
+                );
+
+                alert(
+                    "🏆 ACHIEVEMENT UNLOCKED!\n\n" +
+                    achievement.name
+                );
+
+            }
+
+        });
+
+        renderAchievements();
+
+    }
+
+
+    function renderAchievements() {
+
+        const list =
+            document.getElementById("achievementList");
+
+        list.innerHTML = "";
+
+        achievements.forEach(achievement => {
+
+            const unlocked =
+                unlockedAchievements.includes(
+                    achievement.id
+                );
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                unlocked
+                    ? "achievement unlocked"
+                    : "achievement locked";
+
+            div.innerHTML = `
+                <b>${achievement.name}</b>
+                <br>
+                ${achievement.description}
+            `;
+
+            list.appendChild(div);
+
+        });
+
+    }
+
+
+    
+    // SAVE GAME
+
+    function saveGame() {
+
+        const saveData = {
+
+            score,
+            totalClicks,
+            criticals,
+            totalUpgrades,
+
+            pointsPerClick,
+            pointsPerSecond,
+
+            currentSkin,
+
+            upgrades,
+
+            unlockedAchievements
+
+        };
+
+        localStorage.setItem(
+            "catClickerSave",
+            JSON.stringify(saveData)
+        );
+
+    }
+
+
+   
+    // LOAD GAME
+   
+
+    function loadGame() {
+
+        const saved =
+            localStorage.getItem(
+                "catClickerSave"
+            );
+
+        if (!saved) {
+
+            updateDisplay();
+            renderAchievements();
+
+            return;
+
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        score = data.score || 0;
+        totalClicks = data.totalClicks || 0;
+        criticals = data.criticals || 0;
+        totalUpgrades = data.totalUpgrades || 0;
+
+        pointsPerClick =
+            data.pointsPerClick || 1;
+
+        pointsPerSecond =
+            data.pointsPerSecond || 0;
+
+        currentSkin =
+            data.currentSkin || "🐱";
+
+        if (data.upgrades) {
+
+            Object.keys(upgrades).forEach(type => {
+
+                if (data.upgrades[type]) {
+
+                    upgrades[type].cost =
+                        data.upgrades[type].cost;
+
+                    upgrades[type].owned =
+                        data.upgrades[type].owned;
+
+                }
+
+            });
+
+        }
+
+        unlockedAchievements =
+            data.unlockedAchievements || [];
+
+        cat.textContent = currentSkin;
+
+        updateDisplay();
+        renderAchievements();
+        updateMood();
+
+    }
+
+
+    // =========================
+    // RESET
+    // =========================
+
+    function resetGame() {
+
+        const confirmation =
+            confirm(
+                "Are you sure you want to erase EVERYTHING?\n\n" +
+                "The cat will remember nothing."
+            );
+
+        if (!confirmation) {
+            return;
+        }
+
+        localStorage.removeItem(
+            "catClickerSave"
+        );
+
+        location.reload();
+
+    }
+
+
+    // =========================
+    // START GAME
+    // =========================
+
+    loadGame();
+
 </script>
 
 </body>
