@@ -1,0 +1,147 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Clicker 🐱</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333333;
+        }
+
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        #catEmoji {
+            font-size: 100px;
+            margin: 15px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        #catEmoji:active {
+            transform: scale(0.9);
+        }
+
+        #catMood {
+            font-size: 18px;
+        }
+
+        #score {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4A3525;
+        }
+
+        #catButton {
+            background: #4A3525;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.1s, background 0.2s;
+        }
+
+        #catButton:hover {
+            background: #6A4A35;
+        }
+
+        #catButton:active {
+            transform: scale(0.95);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            color: #4A3525;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game-container">
+
+    <h1>🎮 Cat Clicker</h1>
+
+    <div id="catEmoji">🐱</div>
+
+    <p id="catMood">The cat tolerates your existence.</p>
+
+    <p>
+        Cat Points:
+        <span id="score">0</span>
+    </p>
+
+    <button id="catButton">
+        Pet the Cat
+    </button>
+
+    <br>
+
+    <a href="index.html" class="back-button">
+        ← Back to Portfolio
+    </a>
+
+</div>
+
+<script>
+    let score = 0;
+    let cat = "🐱";
+
+    const scoreText = document.getElementById("score");
+    const moodText = document.getElementById("catMood");
+    const catEmoji = document.getElementById("catEmoji");
+    const button = document.getElementById("catButton");
+
+    button.addEventListener("click", () => {
+
+        score++;
+
+        scoreText.textContent = score;
+
+        if (score >= 100) {
+            cat = "🌌🐱";
+            moodText.textContent = "THE CAT OWNS THE WEBSITE.";
+        }
+        else if (score >= 50) {
+            cat = "🧙🐱";
+            moodText.textContent = "The cat has learned forbidden magic.";
+        }
+        else if (score >= 20) {
+            cat = "😾";
+            moodText.textContent = "The cat demands tribute.";
+        }
+        else if (score >= 10) {
+            cat = "😺";
+            moodText.textContent = "The cat has noticed your existence.";
+        }
+
+        catEmoji.textContent = cat;
+    });
+</script>
+
+</body>
+</html>
