@@ -61,7 +61,7 @@
         🎮 Cat Clicker
     </h3>
     <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        A tiny JavaScript clicker game
+        A tiny JavaScript clicker game (Just for Fun)
     </p>
 </a>
 
