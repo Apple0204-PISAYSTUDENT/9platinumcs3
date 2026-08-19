@@ -1,7 +1,7 @@
 <div style="background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;">
 
 <div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;">
-
+</detail>
 <style> 
     .assignment-card { 
         background-color: #FAEDCD; 
@@ -20,7 +20,7 @@
         box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15); 
     }
 </style>
-
+</detail>
 <h1 style="margin-top: 0;">9platinumcs3</h1>
 
 <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">
