@@ -56,6 +56,15 @@
     </p>
 </a>
 
+<a href="q1/ila_oop.md" class="assignment-card">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">
+        📚 Activity 3
+    </h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
+        Applying the Four Pillars of OOP (OOP Concept)
+    </p>
+</a>
+
 <a href="CatClicker.html" class="assignment-card" style="margin-top: 15px;">
     <h3 style="margin: 0; padding: 0; color: #4A3525;">
         🎮 Cat Clicker
