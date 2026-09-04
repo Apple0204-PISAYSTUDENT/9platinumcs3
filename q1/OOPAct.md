@@ -1,7 +1,7 @@
 # OOPAct - Understanding Classes and Objects
 **Section:** 9 - Platinum  
 **Name:** Ace Philip Lee T. Mendoza  
-**Date:** August 19, 2026
+**Date:** September 4, 2026
 ## Class Name
 
 **Potion**
