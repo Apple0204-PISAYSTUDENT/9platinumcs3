@@ -29,7 +29,7 @@ The `Potion` class represents a magical consumable item in a fantasy game (e.g A
 
 ## Class Diagram
 
-![Class Diagram](assets/image.md)
+<img width="1920" height="1080" alt="classDiagram" src="https://github.com/user-attachments/assets/db823448-c336-4166-8004-ade75f385fef" />
 
 ## Design Explanation
 
