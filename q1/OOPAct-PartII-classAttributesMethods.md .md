@@ -23,3 +23,25 @@ Changes from my previous design:
 ## Test Run
 
 ![Test Run](../assets/classTestRun.png)
+
+## Object Diagram
+
+![Object Diagram](../assets/objectDiagram.png)
+
+## Analysis
+
+### 1. Why did you make `uses` private?
+
+I made `uses` private because the number of uses should not be changed directly. It should be controlled by the methods of the class. This helps prevent the value from being changed incorrectly.
+
+### 2. Which method changes the object's state?
+
+The `usePotion()` method changes the object's state by decreasing the number of uses by one. In the test, Potion 1 changed from 3 uses to 2 uses. This shows that the object's data can change when a method is used.
+
+### 3. How do the two objects demonstrate independent state?
+
+The two Potion objects have their own values. When I used Potion 1, its uses decreased from 3 to 2, while Potion 2 remained at 5 uses. This shows that changing one object does not automatically change the other.
+
+### 4. How is the object diagram different from the class diagram?
+
+The class diagram shows the blueprint of the `Potion` class, including its attributes, data types, visibility, and methods. The object diagram shows the actual objects created from the class and their current values. Therefore, the object diagram represents the state of the objects after the test.
