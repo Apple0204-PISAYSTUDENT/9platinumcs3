@@ -74,6 +74,14 @@
     </p>
 </a>
 
+<a href="q1/OOPAct-PartII-classAttributesMethods.html" class="assignment-card" style="margin-top: 15px;">
+    <h3 style="margin: 0; padding: 0; color: #4A3525;">
+        ⚙️ Activity 5
+    </h3>
+    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
+        Class Attributes and Methods
+    </p>
+</a>
 
 <a href="CatClicker.html" class="assignment-card" style="margin-top: 15px;">
     <h3 style="margin: 0; padding: 0; color: #4A3525;">
