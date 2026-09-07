@@ -18,8 +18,8 @@ Changes from my previous design:
 
 ## Updated UML Class Diagram
 
-![Class Diagram](assets/ClassDiagram_revised.png)
+![Class Diagram](../assets/ClassDiagram_revised.png)
 
 ## Test Run
 
-![Test Run](assets/classTestRun.png)
+![Test Run](../assets/classTestRun.png)
