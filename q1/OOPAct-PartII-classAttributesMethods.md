@@ -1,7 +1,7 @@
 ## Design Revision
 **Section:** 9 - Platinum  
 **Name:** Ace Philip Lee T. Mendoza  
-**Date:** August 19, 2026
+**Date:** September 7, 2026
 
 Changes from my previous design:
 - The `uses` attribute was changed from public to private because it should only be changed through the potion's methods.
