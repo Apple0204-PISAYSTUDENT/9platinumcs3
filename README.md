@@ -1,95 +1,61 @@
-<div style="background-image: url('https://github.com/user-attachments/assets/b1456df1-3d88-42fd-843e-3a7f38397227'); background-size: cover; background-position: center bottom; background-repeat: no-repeat; background-attachment: fixed; padding: 40px; font-family: sans-serif; min-height: 100vh;">
+<div style="background-color: #FAEDCD; padding: 25px; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #2b2b2b;">
 
-<div style="background-color: rgba(255, 255, 255, 0.92); padding: 30px; border-radius: 15px; max-width: 800px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15); color: #333333;">
-<style> 
-    .assignment-card { 
-        background-color: #FAEDCD; 
-        border-left: 5px solid #4A3525; 
-        border-radius: 8px; 
-        padding: 15px; 
-        text-decoration: none; 
-        display: block;        
-        color: #333333;
-        transition: all 0.3s ease-in-out; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
-    }
-    
-    .assignment-card:hover { 
-        transform: translateY(-4px); 
-        box-shadow: 0 8px 15px rgba(74, 53, 37, 0.15); 
-    }
-</style>
-<h1 style="margin-top: 0;">9platinumcs3</h1>
+  <h1 style="margin-top: 0; color: #4A3525; font-size: 28px; border-bottom: none; padding-bottom: 0;">
+    9platinumcs3
+  </h1>
 
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 25px;">
+  <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 6px; margin-top: 24px; color: #4A3525;">
     👤 Identification
-</h3>
+  </h3>
 
-<ul style="list-style-type: none; padding-left: 5px; line-height: 1.8;">
+  <ul style="list-style-type: none; padding-left: 0; line-height: 1.8;">
     <li><strong>Name:</strong> Ace Philip Lee T. Mendoza</li>
     <li><strong>Section:</strong> 9 - Platinum</li>
     <li><strong>Age:</strong> 14 yrs.</li>
-    <li><strong>Favorite things:</strong> Cats, Coffee, and Sleeping👍</li>
-</ul>
+    <li><strong>Favorite things:</strong> Cats 🐱, Coffee ☕, Sleeping 😴 👍</li>
+  </ul>
 
-<h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 5px; margin-top: 30px;">
+  <h3 style="border-bottom: 2px solid #4A3525; padding-bottom: 6px; margin-top: 28px; color: #4A3525;">
     📚 Works and Assignments
-</h3>
+  </h3>
 
-<a href="q1/ctskillsPlatinumMendoza.html" class="assignment-card">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        📚 Activity 1
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        Computational Thinking Exercise
-    </p>
+  <a href="q1/ctskillsPlatinumMendoza.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">📚 Activity 1</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Computational Thinking Exercise</p>
 </a>
 
-<a href="q1/zodiacPlatinumMendoza.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        🔮 Activity 2
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        Chinese Zodiac Project
-    </p>
+<a href="q1/zodiacPlatinumMendoza.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🔮 Activity 2</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Chinese Zodiac Project</p>
 </a>
 
-<a href="q1/ila_oop.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        📚 Activity 3
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        Applying the Four Pillars of OOP (OOP Concept)
-    </p>
+<a href="q1/ila_oop.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">📚 Activity 3</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Applying the Four Pillars of OOP (OOP Concept)</p>
 </a>
 
-<a href="q1/OOPAct.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        📚 Activity 4
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        Understanding Classes and Objects
-    </p>
+<a href="q1/OOPAct.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">📚 Activity 4</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Understanding Classes and Objects</p>
 </a>
 
-<a href="q1/OOPAct-PartII-classAttributesMethods.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        ⚙️ Activity 5
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        Class Attributes and Methods
-    </p>
+<a href="q1/OOPAct-PartII-classAttributesMethods.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">⚙️ Activity 5</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Class Attributes and Methods</p>
 </a>
 
-<a href="CatClicker.html" class="assignment-card" style="margin-top: 15px;">
-    <h3 style="margin: 0; padding: 0; color: #4A3525;">
-        🎮 Cat Clicker
-    </h3>
-    <p style="margin: 5px 0 0 0; padding: 0; color: #333333;">
-        A tiny JavaScript clicker game (Just for Fun)
-    </p>
+<a href="CatClicker.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🎮 Cat Clicker</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">A tiny JavaScript clicker game (Just for Fun)</p>
 </a>
 
-</div>
+  <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+
+
+  </div>
+
+  <p style="text-align: center; margin-top: 30px; font-size: 13px; color: #666666;">
+    &copy; Ace Mendoza · Grade 9 CS3 Portfolio
+  </p>
 
 </div>
