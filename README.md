@@ -44,6 +44,12 @@
   <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Class Attributes and Methods</p>
 </a>
 
+<a href="q1/OOPActPartIIIFolder/OOPActPartIII.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🔗 Activity 6</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Connecting Your Objects</p>
+</a>
+
+
 <a href="CatClicker.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
   <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🎮 Cat Clicker</h3>
   <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">A tiny JavaScript clicker game (Just for Fun)</p>
