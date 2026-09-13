@@ -52,7 +52,7 @@ One Tome can contain zero or more Potion objects. A Tome can start with no potio
 
 The UML class diagram shows the attributes and methods of both the `Tome` and `Potion` classes. It also shows their association, where one Tome can contain zero or more Potion objects.
 
-![Class Relationship Diagram](q1/OOPActPartIIIFolder/classRelationshipDiagram.png)
+![Class Relationship Diagram](classRelationshipDiagram.png)
 
 ## Step 6 - Implement the New Class
 
@@ -107,9 +107,9 @@ This allows the program to access the `name` and `strength` attributes of the Po
 
 The test run demonstrates the relationship before, during, and after the Potion objects are added to the Tome. It also demonstrates accessing Potion data through the relationship and using a Potion object through the Tome.
 
-![Relationship Test Run - Part 1](q1/OOPActPartIIIFolder/relationshipTestRun.png)
+![Relationship Test Run - Part 1](relationshipTestRun.png)
 
-![Relationship Test Run - Part 2](q1/OOPActPartIIIFolder/relationshipTestRun2.png)
+![Relationship Test Run - Part 2](relationshipTestRun2.png)
 
 The test run successfully showed that the Tome initially contained zero potions, then contained three Potion objects after the relationship was established.
 
@@ -117,7 +117,7 @@ The test run successfully showed that the Tome initially contained zero potions,
 
 The object relationship diagram represents the actual objects created in the program. It shows the `tome` object connected to the three Potion objects, `potion1`, `potion2`, and `potion3`, through the `contains` relationship.
 
-![Object Relationship Diagram](q1/OOPActPartIIIFolder/objectRelationshipDiagram.png)
+![Object Relationship Diagram](objectRelationshipDiagram.png)
 
 ## Step 13 - Short Analysis
 
