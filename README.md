@@ -49,6 +49,11 @@
   <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Connecting Your Objects</p>
 </a>
 
+<a href="q1/OOPActPartIVFolder/advancedRelationships.md" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+  <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🧬 Activity 7</h3>
+  <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Designing Advanced Class Relationships</p>
+</a>
+
 
 <a href="CatClicker.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
   <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🎮 Cat Clicker</h3>
