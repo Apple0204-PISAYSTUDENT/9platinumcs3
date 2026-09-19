@@ -59,3 +59,55 @@ class Tome:
                 print("-", potion.name)
                 print("  Effect:", potion.effect)
                 print("  Strength:", potion.strength)
+
+# ==============================
+# STEP 10 - TEST YOUR SYSTEM
+# ==============================
+
+print("===== TEST 1: INHERITANCE =====")
+
+healingPotion1 = HealingPotion(
+    "Healing Elixir",
+    "Restores health",
+    8,
+    3,
+    50
+)
+
+print("\nHealing Potion Information:")
+healingPotion1.displayInfo()
+
+print("\nChild-specific method:")
+healingPotion1.heal()
+
+
+print("\n===== TEST 2: AGGREGATION =====")
+
+phoenixElixir = Potion(
+    "Phoenix Elixir",
+    "Revives the user",
+    10,
+    2
+)
+
+frostDraught = Potion(
+    "Frost Draught",
+    "Freezes the target",
+    7,
+    4
+)
+
+alchemistTome = Tome(
+    "The Alchemist's Tome",
+    "Eldrin"
+)
+
+alchemistTome.addPotion(phoenixElixir)
+alchemistTome.addPotion(frostDraught)
+alchemistTome.addPotion(healingPotion1)
+
+print("\nTome Information:")
+print("Title:", alchemistTome.title)
+print("Author:", alchemistTome.author)
+
+alchemistTome.displayContents()
