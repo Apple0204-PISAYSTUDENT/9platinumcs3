@@ -66,9 +66,33 @@ A Dependency relationship was not implemented because the required advanced rela
 
 ## Advanced UML Diagrams
 
+### Inheritance Diagram
+
+This diagram shows the inheritance relationship between `Potion` and `HealingPotion`.
+
 !["Inheritance Diagram"](inheritanceDiagram.png)
 
+### Advanced Class Diagram
+
+This diagram shows the advanced class relationships, including the `Tome` and `Potion` aggregation relationship.
+
 !["Advanced Class Diagram"](inheritanceDiagram\(1\).png)
+
+---
+
+## Test Run
+
+The following image shows the system successfully testing the inheritance and aggregation relationships.
+
+![Test Run](advancedTestRun.png)
+
+---
+
+## Object Diagram
+
+The following image shows the actual objects created in the system and their relationships.
+
+![Advanced Object Diagram](advancedObjectDiagram.png)
 
 ---
 
