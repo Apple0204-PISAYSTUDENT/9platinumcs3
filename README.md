@@ -19,6 +19,11 @@
     📚 Works and Assignments
   </h3>
 
+  <!-- ==================== QUARTER 1 SECTION ==================== -->
+  <h4 style="color: #4A3525; font-size: 18px; margin-top: 20px; margin-bottom: 15px; border-bottom: 1px dashed #4A3525; padding-bottom: 4px;">
+    🍂 Quarter 1
+  </h4>
+
   <a href="q1/ctskillsPlatinumMendoza.html" style="background-color: #FAEDCD !important; border-left: 5px solid #4A3525; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
     <h3 style="margin: 0; color: #4A3525 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">📚 Activity 1</h3>
     <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">Computational Thinking Exercise</p>
@@ -59,8 +64,18 @@
     <p style="margin: 4px 0 0 0; color: #333333 !important; font-size: 14px;">A tiny JavaScript clicker game (Just for Fun)</p>
   </a>
 
-  <p style="text-align: center; margin-top: 30px; font-size: 13px; color: #666666;">
+  <!-- ==================== QUARTER 2 SECTION ==================== -->
+  <h4 style="color: #4A3525; font-size: 18px; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px dashed #4A3525; padding-bottom: 4px;">
+    ❄️ Quarter 2
+  </h4>
+
+  <div style="font-style: italic; color: #555555; padding: 10px 14px; font-size: 14px;">
+    Upcoming works and activities will be posted here soon!
+  </div>
+
+  <p style="text-align: center; margin-top: 40px; font-size: 13px; color: #666666;">
     &copy; Ace Mendoza · Grade 9 CS3 Portfolio
   </p>
 
 </div>
+
