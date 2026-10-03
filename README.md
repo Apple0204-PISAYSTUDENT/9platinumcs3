@@ -1,3 +1,6 @@
+<div style="background-color: #829BB0; background-image: url('asset/Background-PT-HxH.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; padding: 40px 20px; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+
+
 <div style="background-color: #D8E2DC; padding: 25px; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1D3557;">
 
   <h1 style="margin-top: 0; color: #1D3557; font-size: 28px; border-bottom: none; padding-bottom: 0;">
