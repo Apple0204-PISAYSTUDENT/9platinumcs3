@@ -66,11 +66,11 @@
 
   <!-- ==================== QUARTER 2 SECTION ==================== -->
   <h4 style="color: #1D3557; font-size: 18px; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px dashed #1D3557; padding-bottom: 4px;">
-    ❄️ Quarter 2
+    ❄️ Quarter 2 
   </h4>
 
   <div style="font-style: italic; color: #457B9D; padding: 10px 14px; font-size: 14px;">
-    Upcoming works and activities will be posted here soon!
+    Upcoming works and activities will be posted here soon! 
   </div>
 
   <p style="text-align: center; margin-top: 40px; font-size: 13px; color: #457B9D;">
