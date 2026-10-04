@@ -245,16 +245,16 @@
 "use strict";
 
 const CHARACTERS = [
-  {name:"Godspeed", color:"#FFD43B", radius:28, maxHp:150, atk:14, speed:5.2, type:"Transmuter", passive:"Static trail lingers behind every movement."},
-  {name:"Bungee Gum", color:"#FF5DB1", radius:25, maxHp:142, atk:13, speed:5.0, type:"Transmuter", passive:"Boundary rebounds compound velocity, capped at 15."},
-  {name:"Coffee Cat", color:"#A98467", radius:24, maxHp:130, atk:12, speed:4.8, type:"Enhancer", passive:"Below 50% HP, movement parameters become 1.5×."},
+  {name:"Godspeed", color:"#FFD43B", radius:27, maxHp:145, atk:14, speed:6.2, type:"Transmuter", passive:"Lightning-fast aura. Hits can trigger a 2s stun + 3s shock."},
+  {name:"Bungee Gum", color:"#FF5DB1", radius:25, maxHp:142, atk:13, speed:5.2, type:"Transmuter", passive:"Elastic aura. Wall rebounds compound speed and deploys sticky mines."},
+  {name:"Deep Purple", color:"#9B5DE5", radius:26, maxHp:138, atk:12, speed:5.0, type:"Manipulator", passive:"Creates fragile smoke clones with 10 HP and half damage."},
   {name:"Emperor Time", color:"#C77DFF", radius:27, maxHp:145, atk:11, speed:4.7, type:"Specialist", passive:"Steals 6 HP on contact and adds true-damage vectors."},
-  {name:"Ice Shield", color:"#8ECAE6", radius:31, maxHp:170, atk:10, speed:4.1, type:"Conjurer", passive:"Incoming damage is multiplied by 0.6×."},
-  {name:"Dragon Head", color:"#F77F00", radius:30, maxHp:155, atk:15, speed:4.4, type:"Emitter", passive:"Impacts erupt in orange flame bursts."},
-  {name:"Juggernaut", color:"#6C757D", radius:36, maxHp:205, atk:10, speed:3.6, type:"Enhancer", passive:"Receiving hits increases horizontal velocity."},
-  {name:"Phantom Chain", color:"#9BF6FF", radius:23, maxHp:125, atk:16, speed:5.1, type:"Conjurer", passive:"Fast, light frame with high contact damage."},
-  {name:"Shadow Clone", color:"#B8C0FF", radius:26, maxHp:138, atk:13, speed:5.5, type:"Manipulator", passive:"Sharp base acceleration gives unpredictable angles."},
-  {name:"Black Dawn", color:"#343A40", radius:33, maxHp:180, atk:12, speed:3.9, type:"Specialist", passive:"Dense aura frame trades speed for endurance."}
+  {name:"Hakoware", color:"#8ECAE6", radius:31, maxHp:170, atk:10, speed:4.1, type:"Conjurer", passive:"Conjures temporary flat aura barriers after being struck."},
+  {name:"Dragon Dive", color:"#F77F00", radius:30, maxHp:155, atk:15, speed:4.4, type:"Emitter", passive:"Fires ranged aura orbs and detonates orange energy on impact."},
+  {name:"Big Bang Impact", color:"#6C757D", radius:36, maxHp:205, atk:10, speed:3.6, type:"Enhancer", passive:"Heavy aura frame. Receiving hits boosts horizontal velocity."},
+  {name:"Judgment Chain", color:"#9BF6FF", radius:23, maxHp:125, atk:16, speed:5.1, type:"Conjurer", passive:"Whips chains outward. Judgment Chain reflects attacks for 5 seconds."},
+  {name:"Sun and Moon", color:"#B8C0FF", radius:29, maxHp:155, atk:13, speed:4.4, type:"Conjurer", passive:"Marks targets with volatile aura orbs that explode after contact."},
+  {name:"Black Voice", color:"#343A40", radius:33, maxHp:180, atk:12, speed:3.9, type:"Manipulator", passive:"Dense aura frame launches control pulses that disrupt movement."}
 ];
 
 const canvas = document.getElementById("arena");
@@ -265,530 +265,175 @@ const resetBtn = document.getElementById("resetBtn");
 const logEl = document.getElementById("combatLog");
 const statusChip = document.getElementById("statusChip");
 
-let selections = {p1:null, p2:null};
-let balls = [];
-let particles = [];
-let running = false;
-let battleEnded = false;
-let raf = 0;
-let lastTime = 0;
-let fightStart = 0;
+let selections = {p1:null,p2:null};
+let balls=[], particles=[], mines=[], barriers=[], projectiles=[], clones=[], chains=[];
+let running=false, battleEnded=false, raf=0, lastTime=0, fightStart=0, nextId=1;
 
 function renderCharacters(){
-  charactersEl.innerHTML = "";
-  CHARACTERS.forEach((c, i) => {
-    const card = document.createElement("div");
-    card.className = "character";
-    card.dataset.index = i;
-    const selectedP1 = selections.p1 === i;
-    const selectedP2 = selections.p2 === i;
-    if(selectedP1) card.classList.add("p1");
-    if(selectedP2) card.classList.add("p2");
-    card.innerHTML = `
-      <div class="tag">${selectedP1 ? "P1" : "P2"}</div>
-      <div class="orb" style="background:${c.color};color:${c.color}"></div>
-      <h3>${c.name}</h3>
-      <div class="type">${c.type}</div>
-      <div class="desc">${c.passive}</div>
-      <div class="mini-stats">
-        <span>HP ${c.maxHp}</span><span>ATK ${c.atk}</span>
-        <span>SPD ${c.speed}</span><span>MASS ${c.radius}</span>
-      </div>
-    `;
-    card.addEventListener("click", () => selectCharacter(i));
-    charactersEl.appendChild(card);
+  charactersEl.innerHTML="";
+  CHARACTERS.forEach((c,i)=>{
+    const card=document.createElement("div"); card.className="character"; card.dataset.index=i;
+    const p1=selections.p1===i, p2=selections.p2===i;
+    if(p1) card.classList.add("p1"); if(p2) card.classList.add("p2");
+    card.innerHTML=`<div class="tag">${p1?"P1":"P2"}</div><div class="orb" style="background:${c.color};color:${c.color}"></div><h3>${c.name}</h3><div class="type">${c.type}</div><div class="desc">${c.passive}</div><div class="mini-stats"><span>HP ${c.maxHp}</span><span>ATK ${c.atk}</span><span>SPD ${c.speed}</span><span>MASS ${c.radius}</span></div>`;
+    card.addEventListener("click",()=>selectCharacter(i)); charactersEl.appendChild(card);
   });
 }
-
-function selectCharacter(index){
-  if(running) return;
-
-  if(selections.p1 === index){
-    selections.p1 = null;
-  } else if(selections.p2 === index){
-    selections.p2 = null;
-  } else if(selections.p1 === null){
-    selections.p1 = index;
-  } else if(selections.p2 === null){
-    selections.p2 = index;
-  } else {
-    // Both slots occupied: replace P2, keeping P1 stable.
-    selections.p2 = index;
-  }
+function selectCharacter(i){
+  if(running)return;
+  if(selections.p1===i) selections.p1=null;
+  else if(selections.p2===i) selections.p2=null;
+  else if(selections.p1===null) selections.p1=i;
+  else if(selections.p2===null) selections.p2=i;
+  else selections.p2=i;
   updateSelectionUI();
 }
-
 function updateSelectionUI(){
-  renderCharacters();
-  updatePlayerPanel("p1", selections.p1);
-  updatePlayerPanel("p2", selections.p2);
-  fightBtn.disabled = selections.p1 === null || selections.p2 === null;
-  statusChip.textContent = fightBtn.disabled ? "SELECT TWO COMBATANTS" : "READY // FIGHT AUTHORIZED";
+  renderCharacters(); updatePlayerPanel("p1",selections.p1); updatePlayerPanel("p2",selections.p2);
+  fightBtn.disabled=selections.p1===null||selections.p2===null;
+  statusChip.textContent=fightBtn.disabled?"SELECT TWO COMBATANTS":"READY // FIGHT AUTHORIZED";
 }
-
-function updatePlayerPanel(player, index){
-  const c = index === null ? null : CHARACTERS[index];
-  const prefix = player;
-  document.getElementById(prefix+"Name").textContent = c ? c.name : "Awaiting Selection";
-  document.getElementById(prefix+"Type").textContent = c ? c.type : "—";
-  document.getElementById(prefix+"Speed").textContent = c ? c.speed : "—";
-  document.getElementById(prefix+"Mass").textContent = c ? c.radius : "—";
-  document.getElementById(prefix+"Desc").textContent = c ? c.passive : "Choose a character.";
-  document.getElementById(prefix+"HpText").textContent = c ? `${c.maxHp} / ${c.maxHp}` : "— / —";
-  document.getElementById(prefix+"HpFill").style.width = c ? "100%" : "0%";
+function updatePlayerPanel(p,i){
+  const c=i===null?null:CHARACTERS[i];
+  document.getElementById(p+"Name").textContent=c?c.name:"Awaiting Selection";
+  document.getElementById(p+"Type").textContent=c?c.type:"—";
+  document.getElementById(p+"Speed").textContent=c?c.speed:"—";
+  document.getElementById(p+"Mass").textContent=c?c.radius:"—";
+  document.getElementById(p+"Desc").textContent=c?c.passive:"Choose a character.";
+  document.getElementById(p+"HpText").textContent=c?`${c.maxHp} / ${c.maxHp}`:"— / —";
+  document.getElementById(p+"HpFill").style.width=c?"100%":"0%";
 }
-
 function resetBattle(){
-  running = false;
-  battleEnded = false;
-  cancelAnimationFrame(raf);
-  balls = [];
-  particles = [];
-  lastTime = 0;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  drawArenaBackground();
-  logEl.innerHTML = "";
-  updateSelectionUI();
-  addLog(">> Arena reset. Select two Nen users.", "system");
+  running=false; battleEnded=false; cancelAnimationFrame(raf); balls=[];particles=[];mines=[];barriers=[];projectiles=[];clones=[];chains=[];lastTime=0;
+  ctx.clearRect(0,0,canvas.width,canvas.height);drawArenaBackground();logEl.innerHTML="";updateSelectionUI();addLog(">> Arena reset. Select two Nen users.");
 }
-
-function addLog(message, cls=""){
-  const line = document.createElement("div");
-  line.className = "log-line " + cls;
-  line.textContent = message;
-  logEl.appendChild(line);
-  while(logEl.children.length > 30) logEl.removeChild(logEl.firstChild);
-  logEl.scrollTop = logEl.scrollHeight;
+function addLog(msg,cls=""){
+  const d=document.createElement("div");d.className="log-line "+cls;d.textContent=msg;logEl.appendChild(d);
+  while(logEl.children.length>35)logEl.removeChild(logEl.firstChild);logEl.scrollTop=logEl.scrollHeight;
 }
-
-function makeBall(character, player, x, y, vx, vy){
-  return {
-    c: character,
-    player,
-    x,y,vx,vy,
-    radius: character.radius,
-    hp: character.maxHp,
-    maxHp: character.maxHp,
-    auraPhase: Math.random()*Math.PI*2,
-    hitFlash: 0,
-    hitCooldown: 0,
-    wallCooldown: 0,
-    coffeeBoosted:false,
-    lastX:x,
-    lastY:y
-  };
+function makeBall(c,player,x,y,vx,vy,clone=false){
+  return {id:nextId++,c,player,x,y,vx,vy,radius:c.radius*(clone?.72:1),hp:clone?10:c.maxHp,maxHp:clone?10:c.maxHp,atk:clone?c.atk*.5:c.atk,auraPhase:Math.random()*7,hitFlash:0,hitCooldown:0,wallCooldown:0,abilityCd:0,abilityMax:0,stun:0,shock:0,shockDps:0,reflectUntil:0,clone,dead:false,mark:0};
 }
-
 function startBattle(){
-  if(selections.p1 === null || selections.p2 === null || running) return;
-
-  running = true;
-  battleEnded = false;
-  particles = [];
-  const c1 = CHARACTERS[selections.p1];
-  const c2 = CHARACTERS[selections.p2];
-
-  balls = [
-    makeBall(c1, 1, canvas.width*0.25, canvas.height*0.5, c1.speed, -c1.speed*0.55),
-    makeBall(c2, 2, canvas.width*0.75, canvas.height*0.5, -c2.speed, c2.speed*0.55)
-  ];
-
-  fightStart = performance.now();
-  lastTime = fightStart;
-  fightBtn.disabled = true;
-  statusChip.textContent = "COMBAT // LIVE";
-  addLog(`>> Arena sealed. ${c1.name} vs ${c2.name}.`, "system");
-  addLog(">> Aura signatures detected. Begin.", "system");
-  raf = requestAnimationFrame(loop);
+  if(selections.p1===null||selections.p2===null||running)return;
+  running=true; battleEnded=false;particles=[];mines=[];barriers=[];projectiles=[];clones=[];
+  const c1=CHARACTERS[selections.p1],c2=CHARACTERS[selections.p2];
+  balls=[makeBall(c1,1,canvas.width*.25,canvas.height*.5,c1.speed,-c1.speed*.55),makeBall(c2,2,canvas.width*.75,canvas.height*.5,-c2.speed,c2.speed*.55)];
+  fightStart=performance.now();lastTime=fightStart;fightBtn.disabled=true;statusChip.textContent="COMBAT // LIVE";
+  addLog(`>> Arena sealed. ${c1.name} vs ${c2.name}.`);addLog(">> All Hatsu systems armed.");raf=requestAnimationFrame(loop);
 }
-
-function effectiveSpeed(ball){
-  let mult = 1;
-  if(ball.c.name === "Coffee Cat" && ball.hp < ball.maxHp*0.5){
-    mult *= 1.5;
-    ball.coffeeBoosted = true;
-  } else {
-    ball.coffeeBoosted = false;
-  }
-  return mult;
+function abilityName(ball){
+  return ({"Godspeed":"Godspeed","Bungee Gum":"Elastic Mine","Deep Purple":"Deep Purple","Emperor Time":"Emperor Time","Hakoware":"Potclean Barrier","Dragon Dive":"Dragon Shot","Big Bang Impact":"Big Bang Impact","Judgment Chain":"Judgment Chain","Sun and Moon":"Sun and Moon","Black Voice":"Black Voice Pulse"})[ball.c.name];
 }
-
-function clampSpeed(ball, max=15){
-  const s = Math.hypot(ball.vx,ball.vy);
-  if(s > max){
-    ball.vx = ball.vx/s*max;
-    ball.vy = ball.vy/s*max;
-  }
+function abilityCooldown(ball){
+  const n=ball.c.name;
+  return {"Godspeed":10,"Bungee Gum":8,"Deep Purple":12,"Emperor Time":9,"Hakoware":5,"Dragon Dive":3.5,"Big Bang Impact":8,"Judgment Chain":15,"Sun and Moon":7,"Black Voice":6}[n]||8;
 }
-
-function updateBall(ball, dt){
-  const speedMult = effectiveSpeed(ball);
-  ball.lastX = ball.x;
-  ball.lastY = ball.y;
-
-  ball.x += ball.vx * dt * 60 * speedMult;
-  ball.y += ball.vy * dt * 60 * speedMult;
-  ball.hitFlash = Math.max(0,ball.hitFlash-dt*4);
-  ball.hitCooldown = Math.max(0,ball.hitCooldown-dt);
-  ball.wallCooldown = Math.max(0,ball.wallCooldown-dt);
-
-  let hitWall = false;
-  if(ball.x-ball.radius < 0){
-    ball.x = ball.radius;
-    ball.vx = Math.abs(ball.vx);
-    hitWall = true;
-  } else if(ball.x+ball.radius > canvas.width){
-    ball.x = canvas.width-ball.radius;
-    ball.vx = -Math.abs(ball.vx);
-    hitWall = true;
-  }
-  if(ball.y-ball.radius < 0){
-    ball.y = ball.radius;
-    ball.vy = Math.abs(ball.vy);
-    hitWall = true;
-  } else if(ball.y+ball.radius > canvas.height){
-    ball.y = canvas.height-ball.radius;
-    ball.vy = -Math.abs(ball.vy);
-    hitWall = true;
-  }
-
-  if(hitWall && ball.c.name === "Bungee Gum" && ball.wallCooldown <= 0){
-    const s = Math.min(15, Math.hypot(ball.vx,ball.vy)*1.10 + 0.15);
-    const current = Math.hypot(ball.vx,ball.vy) || 1;
-    ball.vx = ball.vx/current*s;
-    ball.vy = ball.vy/current*s;
-    ball.wallCooldown = .10;
-    spawnImpact(ball.x,ball.y,"#FF5DB1",8,0.6);
-    addLog(">> Bungee Gum compounds a boundary rebound.", "impact");
-  }
-
-  clampSpeed(ball,15);
-
-  if(ball.c.name === "Godspeed"){
-    for(let i=0;i<2;i++){
-      particles.push({
-        x:ball.x+(Math.random()-.5)*ball.radius,
-        y:ball.y+(Math.random()-.5)*ball.radius,
-        vx:(Math.random()-.5)*.7,
-        vy:(Math.random()-.5)*.7,
-        life:.28+Math.random()*.35,
-        max:.55,
-        size:1.5+Math.random()*2,
-        color:"#FFD43B",
-        kind:"static"
-      });
-    }
-  }
+function effectiveSpeed(b){return b.c.name==="Coffee Cat"&&b.hp<b.maxHp*.5?1.5:1}
+function clampSpeed(b,max=15){const s=Math.hypot(b.vx,b.vy);if(s>max){b.vx=b.vx/s*max;b.vy=b.vy/s*max}}
+function updateBall(b,dt){
+  if(b.dead)return;
+  b.hitFlash=Math.max(0,b.hitFlash-dt*4);b.hitCooldown=Math.max(0,b.hitCooldown-dt);b.wallCooldown=Math.max(0,b.wallCooldown-dt);b.abilityCd=Math.max(0,b.abilityCd-dt);b.stun=Math.max(0,b.stun-dt);b.reflectUntil=Math.max(0,b.reflectUntil-dt);b.shock=Math.max(0,b.shock-dt);
+  if(b.shock>0&&b.shockDps>0){b.hp=Math.max(0,b.hp-b.shockDps*dt);updateHpUI(b)}
+  if(b.stun<=0){
+    const m=effectiveSpeed(b);b.x+=b.vx*dt*60*m;b.y+=b.vy*dt*60*m;
+  } else {b.vx*=Math.pow(.15,dt);b.vy*=Math.pow(.15,dt)}
+  let wall=false;
+  if(b.x-b.radius<0){b.x=b.radius;b.vx=Math.abs(b.vx);wall=true}else if(b.x+b.radius>canvas.width){b.x=canvas.width-b.radius;b.vx=-Math.abs(b.vx);wall=true}
+  if(b.y-b.radius<0){b.y=b.radius;b.vy=Math.abs(b.vy);wall=true}else if(b.y+b.radius>canvas.height){b.y=canvas.height-b.radius;b.vy=-Math.abs(b.vy);wall=true}
+  if(wall&&b.c.name==="Bungee Gum"&&b.wallCooldown<=0){const s=Math.min(15,Math.hypot(b.vx,b.vy)*1.12+.2),q=Math.hypot(b.vx,b.vy)||1;b.vx=b.vx/q*s;b.vy=b.vy/q*s;b.wallCooldown=.12;addLog(">> Bungee Gum accelerates off the wall.","impact");spawnImpact(b.x,b.y,"#FF5DB1",8)}
+  clampSpeed(b);
 }
-
+function distance(a,b){return Math.hypot(b.x-a.x,b.y-a.y)}
 function resolveCollision(a,b){
-  let dx=b.x-a.x, dy=b.y-a.y;
-  let dist=Math.hypot(dx,dy);
-  const minDist=a.radius+b.radius;
-
-  if(dist===0){
-    dx=1;dy=0;dist=1;
-  }
-  if(dist >= minDist) return;
-
-  const nx=dx/dist, ny=dy/dist;
-  const overlap=minDist-dist;
-
-  // Perfect positional separation, weighted by inverse mass.
-  const ma=a.radius*a.radius, mb=b.radius*b.radius;
-  const total=ma+mb;
-  a.x -= nx*overlap*(mb/total);
-  a.y -= ny*overlap*(mb/total);
-  b.x += nx*overlap*(ma/total);
-  b.y += ny*overlap*(ma/total);
-
-  // Relative velocity along collision normal.
-  const rvx=b.vx-a.vx, rvy=b.vy-a.vy;
-  const velAlongNormal=rvx*nx+rvy*ny;
-  if(velAlongNormal > 0) return;
-
-  // Classic elastic impulse for unequal masses.
-  const restitution=1;
-  const impulse=-(1+restitution)*velAlongNormal/(1/ma+1/mb);
-  a.vx -= impulse*nx/ma;
-  a.vy -= impulse*ny/ma;
-  b.vx += impulse*nx/mb;
-  b.vy += impulse*ny/mb;
-
-  // A tiny tangent-preserving nudge prevents zero-velocity clumping.
-  const tangentX=-ny, tangentY=nx;
-  const tangentNudge=.015;
-  a.vx -= tangentX*tangentNudge;
-  a.vy -= tangentY*tangentNudge;
-  b.vx += tangentX*tangentNudge;
-  b.vy += tangentY*tangentNudge;
-
-  if(a.hitCooldown<=0 && b.hitCooldown<=0){
-    applyCombatHit(a,b);
-    a.hitCooldown=.09;
-    b.hitCooldown=.09;
-  }
+  if(a.dead||b.dead)return;
+  let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);if(!d){dx=1;dy=0;d=1}
+  const min=a.radius+b.radius;if(d>=min)return;
+  const nx=dx/d,ny=dy/d,over=min-d,ma=a.radius*a.radius,mb=b.radius*b.radius,total=ma+mb;
+  a.x-=nx*over*(mb/total);a.y-=ny*over*(mb/total);b.x+=nx*over*(ma/total);b.y+=ny*over*(ma/total);
+  const rvx=b.vx-a.vx,rvy=b.vy-a.vy,rel=rvx*nx+rvy*ny;
+  if(rel<=0){const imp=-(2)*rel/(1/ma+1/mb);a.vx-=imp*nx/ma;a.vy-=imp*ny/ma;b.vx+=imp*nx/mb;b.vy+=imp*ny/mb}
+  if(a.hitCooldown<=0&&b.hitCooldown<=0){applyCombatHit(a,b);a.hitCooldown=.09;b.hitCooldown=.09}
 }
-
+function applyDamage(attacker,target,raw,source="contact"){
+  if(target.dead)return 0;
+  let dmg=raw;
+  if(target.c.name==="Hakoware")dmg*=.6;
+  if(target.reflectUntil>0&&source==="contact"){
+    attacker.hp=Math.max(0,attacker.hp-dmg);spawnImpact(attacker.x,attacker.y,"#9BF6FF",12);addLog(`>> Judgment Chain reflects ${formatDmg(dmg)} damage!`,"impact");return dmg;
+  }
+  target.hp=Math.max(0,target.hp-dmg);target.hitFlash=1;updateHpUI(target);return dmg;
+}
 function applyCombatHit(a,b){
-  let damageToB=a.c.atk;
-  let damageToA=b.c.atk;
-
-  if(b.c.name === "Ice Shield") damageToB *= .6;
-  if(a.c.name === "Ice Shield") damageToA *= .6;
-
-  damageToB = Math.max(1,damageToB);
-  damageToA = Math.max(1,damageToA);
-
-  b.hp=Math.max(0,b.hp-damageToB);
-  a.hp=Math.max(0,a.hp-damageToA);
-
-  if(a.c.name === "Emperor Time"){
-    const steal=Math.min(6,b.hp);
-    b.hp=Math.max(0,b.hp-steal);
-    a.hp=Math.min(a.maxHp,a.hp+steal);
-    damageToB += steal;
-    addLog(`>> Emperor Time steals ${steal} HP from ${b.c.name}.`, "impact");
-    spawnImpact(b.x,b.y,"#C77DFF",12,1.0);
+  let da=applyDamage(a,b,a.atk),db=applyDamage(b,a,b.atk);
+  if(a.c.name==="Hakoware" && a.abilityCd<=0){conjureBarrier(a);}
+  if(b.c.name==="Hakoware" && b.abilityCd<=0){conjureBarrier(b);}
+  if(a.c.name==="Emperor Time"){const steal=Math.min(6,b.hp);b.hp-=steal;a.hp=Math.min(a.maxHp,a.hp+steal);da+=steal;updateHpUI(a);updateHpUI(b);addLog(`>> Emperor Time steals ${steal} HP from ${b.c.name}.`,"impact")}
+  if(b.c.name==="Emperor Time"){const steal=Math.min(6,a.hp);a.hp-=steal;b.hp=Math.min(b.maxHp,b.hp+steal);db+=steal;updateHpUI(a);updateHpUI(b);addLog(`>> Emperor Time steals ${steal} HP from ${a.c.name}.`,"impact")}
+  if(a.c.name==="Juggernaut"||a.c.name==="Big Bang Impact")a.vx+=(b.x>a.x?-.45:.45);
+  if(b.c.name==="Juggernaut"||b.c.name==="Big Bang Impact")b.vx+=(a.x>b.x?-.45:.45);
+  if(a.c.name==="Godspeed")godspeedHit(a,b);
+  if(b.c.name==="Godspeed")godspeedHit(b,a);
+  if(a.c.name==="Dragon Dive")spawnFlames(a.x,a.y);if(b.c.name==="Dragon Dive")spawnFlames(b.x,b.y);
+  if(a.c.name==="Judgment Chain")chainWhip(a);if(b.c.name==="Judgment Chain")chainWhip(b);
+  spawnImpact((a.x+b.x)/2,(a.y+b.y)/2,"#FFFFFF",18);addLog(`>> Clash! ${b.c.name} suffers -${formatDmg(da)} HP.`,a.player===1?"p1":"p2");addLog(`>> Clash! ${a.c.name} suffers -${formatDmg(db)} HP.`,b.player===1?"p1":"p2");
+}
+function godspeedHit(self,target){
+  if(self.godspeedCd>0)return;
+  self.godspeedCd=10;target.stun=2;target.shock=3;target.shockDps=self.c.atk*.10;spawnImpact(target.x,target.y,"#FFD43B",25,1.3);addLog(`>> Godspeed shocks ${target.c.name}: STUN 2s / SHOCK 3s!`,"impact");
+}
+function conjureBarrier(b){const horizontal=Math.random()>.5;barriers.push({x:horizontal?0:b.x,y:horizontal?b.y:0,w:horizontal?canvas.width:5,h:horizontal?5:canvas.height,life:10,owner:b.player});b.abilityMax=5;b.abilityCd=5;spawnImpact(b.x,b.y,"#8ECAE6",18);addLog(`>> Hakoware conjures a flat barrier for 10s!`,"impact");}
+function fireAbility(b){
+  if(b.dead||b.abilityCd>0||b.stun>0)return;
+  const n=b.c.name; b.abilityMax=abilityCooldown(b);b.abilityCd=b.abilityMax;
+  const enemy=balls.find(x=>x!==b&&!x.dead);
+  if(!enemy)return;
+  if(n==="Godspeed"){b.vx*=1.25;b.vy*=1.25;spawnImpact(b.x,b.y,"#FFD43B",18);addLog(">> Godspeed: lightning acceleration!");}
+  else if(n==="Bungee Gum"){mines.push({x:b.x,y:b.y,r:16,life:8,owner:b.player});addLog(">> Bungee Gum deploys a sticky mine.");}
+  else if(n==="Deep Purple"){for(let i=0;i<2;i++){const ang=Math.random()*Math.PI*2;const c=makeBall(b.c,b.player,b.x+Math.cos(ang)*35,b.y+Math.sin(ang)*35,b.vx+(Math.random()-.5)*3,b.vy+(Math.random()-.5)*3,true);clones.push(c);balls.push(c)}addLog(">> Deep Purple creates two smoke clones.");}
+  else if(n==="Emperor Time"){b.hp=Math.min(b.maxHp,b.hp+4);enemy.hp=Math.max(0,enemy.hp-8);updateHpUI(b);updateHpUI(enemy);spawnImpact(enemy.x,enemy.y,"#C77DFF",20);addLog(">> Emperor Time: aura tax applied.");}
+  else if(n==="Hakoware"){addLog(">> Hakoware is primed: next opposing collision conjures a barrier.");}
+  else if(n==="Dragon Dive"){const ang=Math.atan2(enemy.y-b.y,enemy.x-b.x);projectiles.push({x:b.x,y:b.y,vx:Math.cos(ang)*8,vy:Math.sin(ang)*8,r:9,life:3,owner:b.player,damage:b.atk*.8,color:"#F77F00"});addLog(">> Dragon Dive launches an aura projectile.");}
+  else if(n==="Big Bang Impact"){const ang=Math.atan2(enemy.y-b.y,enemy.x-b.x);b.vx=Math.cos(ang)*12;b.vy=Math.sin(ang)*12;addLog(">> Big Bang Impact charges forward!");}
+  else if(n==="Judgment Chain"){b.reflectUntil=5;chainWhip(b);addLog(">> Judgment Chain is active: damage reflected for 5s!","impact");}
+  else if(n==="Sun and Moon"){enemy.mark=5;spawnImpact(enemy.x,enemy.y,"#B8C0FF",15);addLog(">> Sun and Moon marks the target.");}
+  else if(n==="Black Voice"){enemy.stun=1.2;enemy.vx*=-.2;enemy.vy*=-.2;spawnImpact(enemy.x,enemy.y,"#343A40",18);addLog(">> Black Voice disrupts the target.");}
+}
+function updateSpecialSystems(dt){
+  for(const b of balls){
+    if(b.dead)continue;
+    if(b.c.name==="Godspeed"){b.godspeedCd=Math.max(0,(b.godspeedCd||0)-dt)}
+    if(b.abilityCd<=0&&b.stun<=0)fireAbility(b);
   }
-  if(b.c.name === "Emperor Time"){
-    const steal=Math.min(6,a.hp);
-    a.hp=Math.max(0,a.hp-steal);
-    b.hp=Math.min(b.maxHp,b.hp+steal);
-    damageToA += steal;
-    addLog(`>> Emperor Time steals ${steal} HP from ${a.c.name}.`, "impact");
-    spawnImpact(a.x,a.y,"#C77DFF",12,1.0);
-  }
-
-  if(a.c.name === "Juggernaut"){
-    a.vx += (b.x>a.x ? -.45 : .45);
-  }
-  if(b.c.name === "Juggernaut"){
-    b.vx += (a.x>b.x ? -.45 : .45);
-  }
-
-  spawnImpact((a.x+b.x)/2,(a.y+b.y)/2,"#FFFFFF",18,1.1);
-
-  if(a.c.name==="Dragon Head") spawnFlames(a.x,a.y);
-  if(b.c.name==="Dragon Head") spawnFlames(b.x,b.y);
-
-  const hitNameB = b.c.name === "Ice Shield" ? `Ice Shield absorbs the blow` : `${b.c.name} suffers -${formatDmg(damageToB)} HP`;
-  const hitNameA = a.c.name === "Ice Shield" ? `Ice Shield absorbs the blow` : `${a.c.name} suffers -${formatDmg(damageToA)} HP`;
-  addLog(`>> Clash! ${hitNameB} from ${a.c.name}.`, a.player===1?"p1":"p2");
-  addLog(`>> Clash! ${hitNameA} from ${b.c.name}.`, b.player===1?"p1":"p2");
-
-  updateHpUI(a);
-  updateHpUI(b);
+  for(const m of mines){m.life-=dt;for(const b of balls){if(b.dead||b.player===m.owner)continue;if(Math.hypot(b.x-m.x,b.y-m.y)<b.radius+m.r){b.stun=Math.max(b.stun,1.5);b.vx*=.25;b.vy*=.25;m.life=0;spawnImpact(b.x,b.y,"#FF5DB1",22);addLog(`>> Bungee Mine catches ${b.c.name} for 1.5s!`,"impact")}}}
+  mines=mines.filter(m=>m.life>0);
+  for(const p of projectiles){p.x+=p.vx*dt*60;p.y+=p.vy*dt*60;p.life-=dt;for(const b of balls){if(b.dead||b.player===p.owner)continue;if(Math.hypot(b.x-p.x,b.y-p.y)<b.radius+p.r){applyDamage(b, b, 0);b.hp=Math.max(0,b.hp-p.damage);updateHpUI(b);spawnFlames(b.x,b.y);p.life=0;addLog(`>> Dragon projectile hits ${b.c.name} for ${formatDmg(p.damage)} HP.`)}}}
+  projectiles=projectiles.filter(p=>p.life>0&&p.x>-30&&p.x<canvas.width+30&&p.y>-30&&p.y<canvas.height+30);
+  barriers=barriers.filter(s=>{s.life-=dt;return s.life>0});
+  chains.forEach(ch=>{ch.life-=dt; const owner=balls.find(b=>b.id===ch.owner); if(owner){const a0=Math.atan2(owner.vy,owner.vx);ch.segments.forEach((q,i)=>{const a=a0+Math.sin(i*.75+performance.now()*.006)*.75;const r=owner.radius+10+i*6;q.x=owner.x+Math.cos(a)*r;q.y=owner.y+Math.sin(a)*r;})}}); chains=chains.filter(ch=>ch.life>0);
+  for(const b of balls){for(const s of barriers){if(b.x+b.radius>s.x&&b.x-b.radius<s.x+s.w&&b.y+b.radius>s.y&&b.y-b.radius<s.y+s.h){if(s.w>s.h){if(b.y<s.y+s.h/2)b.y=s.y-b.radius;else b.y=s.y+s.h+b.radius;b.vy*=-1}else{if(b.x<s.x+s.w/2)b.x=s.x-b.radius;else b.x=s.x+s.w+b.radius;b.vx*=-1}}}}
+  for(const c of clones){if(c.dead)continue;const enemy=balls.find(x=>x.player!==c.player&&!x.clone&&!x.dead);if(enemy){const dx=enemy.x-c.x,dy=enemy.y-c.y,d=Math.hypot(dx,dy)||1;c.vx+=(dx/d)*.015;c.vy+=(dy/d)*.015}if(c.hp<=0){c.dead=true;spawnImpact(c.x,c.y,"#9B5DE5",12)}}
+  clones=clones.filter(c=>!c.dead);balls=balls.filter(b=>!b.dead||!b.clone);
 }
-
-function formatDmg(n){
-  return Number.isInteger(n) ? n : n.toFixed(1);
+function formatDmg(n){return Number.isInteger(n)?n:n.toFixed(1)}
+function spawnImpact(x,y,color,count=14,power=1){for(let i=0;i<count;i++){const a=Math.random()*Math.PI*2,s=(1+Math.random()*3)*power;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.25+Math.random()*.45,max:.7,size:1+Math.random()*2.5,color,kind:"impact"})}}
+function spawnFlames(x,y){for(let i=0;i<20;i++){const a=-Math.PI/2+(Math.random()-.5)*2.1,s=1.2+Math.random()*3.5;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.4+Math.random()*.5,max:.9,size:2+Math.random()*4,color:Math.random()>.35?"#FF9F1C":"#F77F00",kind:"flame"})}}
+function chainWhip(b){const a0=Math.atan2(b.vy,b.vx);const segments=[];for(let i=0;i<10;i++){const a=a0+Math.sin(i*.75)*.75;const r=b.radius+10+i*6;segments.push({x:b.x+Math.cos(a)*r,y:b.y+Math.sin(a)*r,r:5});particles.push({x:b.x+Math.cos(a)*r,y:b.y+Math.sin(a)*r,vx:Math.cos(a)*1.2,vy:Math.sin(a)*1.2,life:.5,max:.5,size:3,color:"#9BF6FF",kind:"chain"})}chains.push({owner:b.id,segments,life:.65});}
+function updateParticles(dt){for(const p of particles){p.x+=p.vx*dt*60;p.y+=p.vy*dt*60;p.vx*=Math.pow(.965,dt*60);p.vy*=Math.pow(.965,dt*60);p.life-=dt}particles=particles.filter(p=>p.life>0)}
+function updateHpUI(b){const pre=b.player===1?"p1":"p2";document.getElementById(pre+"HpFill").style.width=Math.max(0,b.hp/b.maxHp*100)+"%";document.getElementById(pre+"HpText").textContent=`${Math.ceil(b.hp)} / ${b.maxHp}`}
+function drawArenaBackground(){ctx.fillStyle="#1A1625";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle="rgba(216,226,220,.07)";ctx.lineWidth=1;for(let x=20;x<canvas.width;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}for(let y=20;y<canvas.height;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}ctx.strokeStyle="rgba(216,226,220,.12)";ctx.strokeRect(1,1,canvas.width-2,canvas.height-2)}
+function drawBall(b,t){const pc=b.player===1?"#E63946":"#457B9D",pulse=1+Math.sin(t*.006+b.auraPhase)*.1,ar=b.radius*(1.45+pulse*.12);ctx.save();ctx.globalAlpha=.24;ctx.strokeStyle=pc;ctx.lineWidth=4;ctx.beginPath();ctx.arc(b.x,b.y,ar,0,Math.PI*2);ctx.stroke();ctx.restore();ctx.save();ctx.shadowBlur=b.hitFlash>0?32:16;ctx.shadowColor=b.c.color;ctx.fillStyle=b.c.color;ctx.beginPath();ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);ctx.fill();ctx.restore();ctx.strokeStyle=pc;ctx.lineWidth=4;ctx.beginPath();ctx.arc(b.x,b.y,b.radius,0,Math.PI*2);ctx.stroke();ctx.fillStyle="#fff";ctx.font="900 10px Inter,sans-serif";ctx.textAlign="center";ctx.fillText(b.clone?"CLONE":b.player===1?"P1":"P2",b.x,b.y+3);if(b.stun>0){ctx.strokeStyle="#FFD43B";ctx.lineWidth=3;ctx.beginPath();ctx.arc(b.x,b.y,b.radius+8,-1,2);ctx.stroke()}}
+function drawParticles(){for(const p of particles){ctx.save();ctx.globalAlpha=Math.max(0,p.life/p.max);ctx.fillStyle=p.color;ctx.strokeStyle=p.color;if(p.kind==="chain"){ctx.beginPath();ctx.arc(p.x,p.y,p.size+1,0,Math.PI*2);ctx.stroke()}else if(p.kind==="impact"){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.vx*3,p.y-p.vy*3);ctx.lineWidth=p.size;ctx.stroke()}else{ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill()}ctx.restore()}}
+function drawMine(m){ctx.save();ctx.strokeStyle="#FF5DB1";ctx.lineWidth=2;ctx.beginPath();ctx.arc(m.x,m.y,m.r+Math.sin(performance.now()*.01)*3,0,Math.PI*2);ctx.stroke();ctx.fillStyle="#FF5DB1";ctx.globalAlpha=.2;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fill();ctx.restore()}
+function drawBarrier(s){ctx.save();ctx.strokeStyle="#8ECAE6";ctx.shadowBlur=12;ctx.shadowColor="#8ECAE6";ctx.lineWidth=5;ctx.globalAlpha=Math.min(1,s.life/1.2);ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x+s.w,s.y+s.h);ctx.stroke();ctx.restore()}
+function drawChains(){ctx.save();for(const ch of chains){ctx.globalAlpha=Math.max(0,ch.life/.65);ctx.fillStyle="#9BF6FF";for(const q of ch.segments){ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,Math.PI*2);ctx.fill();}for(let i=1;i<ch.segments.length;i++){const a=ch.segments[i-1],b=ch.segments[i];ctx.strokeStyle="#9BF6FF";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}ctx.restore()}
+function drawProjectile(p){ctx.save();ctx.fillStyle=p.color;ctx.shadowBlur=16;ctx.shadowColor=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore()}
+function drawHUD(){if(!balls.length)return;const now=performance.now();ctx.fillStyle="rgba(216,226,220,.7)";ctx.font="700 10px SFMono-Regular,Consolas,monospace";ctx.textAlign="left";ctx.fillText(`TIME ${((now-fightStart)/1000).toFixed(1)}s`,16,20);ctx.textAlign="right";ctx.fillText("AURA LINK // ACTIVE",canvas.width-16,20);
+  balls.filter(b=>!b.clone).forEach((b,i)=>{const y=canvas.height-18-i*20,w=150,x=b.player===1?16:canvas.width-166;ctx.textAlign="left";ctx.fillStyle="#D8E2DC";ctx.fillText(`${abilityName(b)} [${b.abilityCd<=0?"READY":b.abilityCd.toFixed(1)+"s"}]`,x,y);ctx.fillStyle="#30303c";ctx.fillRect(x,y+4,w,5);ctx.fillStyle=b.player===1?"#E63946":"#457B9D";const pct=b.abilityMax?1-b.abilityCd/b.abilityMax:1;ctx.fillRect(x,y+4,w*Math.max(0,Math.min(1,pct)),5);});
 }
-
-function spawnImpact(x,y,color,count=14,power=1){
-  for(let i=0;i<count;i++){
-    const angle=Math.random()*Math.PI*2;
-    const speed=(1+Math.random()*3)*power;
-    particles.push({
-      x,y,
-      vx:Math.cos(angle)*speed,
-      vy:Math.sin(angle)*speed,
-      life:.25+Math.random()*.45,
-      max:.7,
-      size:1+Math.random()*2.5,
-      color,
-      kind:"impact"
-    });
-  }
-}
-
-function spawnFlames(x,y){
-  for(let i=0;i<20;i++){
-    const angle=-Math.PI/2+(Math.random()-.5)*2.1;
-    const speed=1.2+Math.random()*3.5;
-    particles.push({
-      x,y,
-      vx:Math.cos(angle)*speed,
-      vy:Math.sin(angle)*speed,
-      life:.4+Math.random()*.5,
-      max:.9,
-      size:2+Math.random()*4,
-      color:Math.random()>.35 ? "#FF9F1C" : "#F77F00",
-      kind:"flame"
-    });
-  }
-  addLog(">> Dragon Head detonates an orange flame burst!", "impact");
-}
-
-function updateParticles(dt){
-  for(const p of particles){
-    p.x+=p.vx*dt*60;
-    p.y+=p.vy*dt*60;
-    p.vx*=Math.pow(.965,dt*60);
-    p.vy*=Math.pow(.965,dt*60);
-    p.life-=dt;
-  }
-  particles=particles.filter(p=>p.life>0);
-}
-
-function updateHpUI(ball){
-  const prefix=ball.player===1?"p1":"p2";
-  const pct=Math.max(0,ball.hp/ball.maxHp*100);
-  document.getElementById(prefix+"HpFill").style.width=pct+"%";
-  document.getElementById(prefix+"HpText").textContent=`${Math.ceil(ball.hp)} / ${ball.maxHp}`;
-}
-
-function drawArenaBackground(){
-  ctx.fillStyle="#1A1625";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.strokeStyle="rgba(216,226,220,.07)";
-  ctx.lineWidth=1;
-  for(let x=20;x<canvas.width;x+=40){
-    ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();
-  }
-  for(let y=20;y<canvas.height;y+=40){
-    ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();
-  }
-
-  ctx.strokeStyle="rgba(216,226,220,.12)";
-  ctx.strokeRect(1,1,canvas.width-2,canvas.height-2);
-}
-
-function drawBall(ball,t){
-  const playerColor=ball.player===1 ? "#E63946" : "#457B9D";
-  const pulse=1+Math.sin(t*.006+ball.auraPhase)*.10;
-  const auraR=ball.radius*(1.45+pulse*.12);
-
-  ctx.save();
-  ctx.globalAlpha=.24;
-  ctx.strokeStyle=playerColor;
-  ctx.lineWidth=4;
-  ctx.beginPath();
-  ctx.arc(ball.x,ball.y,auraR,0,Math.PI*2);
-  ctx.stroke();
-  ctx.globalAlpha=.08;
-  ctx.fillStyle=playerColor;
-  ctx.beginPath();
-  ctx.arc(ball.x,ball.y,auraR,0,Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-
-  ctx.save();
-  ctx.shadowBlur=ball.hitFlash>0 ? 32 : 16;
-  ctx.shadowColor=ball.c.color;
-  ctx.fillStyle=ball.c.color;
-  ctx.beginPath();
-  ctx.arc(ball.x,ball.y,ball.radius,0,Math.PI*2);
-  ctx.fill();
-  ctx.restore();
-
-  ctx.strokeStyle=playerColor;
-  ctx.lineWidth=4;
-  ctx.beginPath();
-  ctx.arc(ball.x,ball.y,ball.radius,0,Math.PI*2);
-  ctx.stroke();
-
-  // Minimal tech/nen glyph.
-  ctx.strokeStyle="rgba(255,255,255,.65)";
-  ctx.lineWidth=1.5;
-  ctx.beginPath();
-  ctx.arc(ball.x,ball.y,ball.radius*.48,t*.0007,t*.0007+Math.PI*1.35);
-  ctx.stroke();
-
-  ctx.fillStyle="#fff";
-  ctx.font="900 10px Inter, sans-serif";
-  ctx.textAlign="center";
-  ctx.fillText(ball.player===1?"P1":"P2",ball.x,ball.y+3);
-}
-
-function drawParticles(){
-  for(const p of particles){
-    const alpha=Math.max(0,p.life/p.max);
-    ctx.save();
-    ctx.globalAlpha=alpha;
-    ctx.fillStyle=p.color;
-    if(p.kind==="static"){
-      ctx.fillRect(p.x,p.y,p.size,p.size);
-    } else if(p.kind==="flame"){
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-      ctx.fill();
-    } else {
-      ctx.beginPath();
-      ctx.moveTo(p.x,p.y);
-      ctx.lineTo(p.x-p.vx*3,p.y-p.vy*3);
-      ctx.strokeStyle=p.color;
-      ctx.lineWidth=p.size;
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
-}
-
-function drawCenterHUD(){
-  if(!balls.length) return;
-  const elapsed=((performance.now()-fightStart)/1000).toFixed(1);
-  ctx.fillStyle="rgba(216,226,220,.65)";
-  ctx.font="700 10px SFMono-Regular,Consolas,monospace";
-  ctx.textAlign="left";
-  ctx.fillText(`TIME ${elapsed}s`,16,20);
-  ctx.textAlign="right";
-  ctx.fillText(`AURA LINK // ${balls[0].c.type} vs ${balls[1].c.type}`,canvas.width-16,20);
-}
-
-function drawVictory(loser,winner){
-  drawArenaBackground();
-  drawParticles();
-  ctx.save();
-  ctx.fillStyle="rgba(10,8,16,.72)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.textAlign="center";
-  ctx.fillStyle=winner.player===1 ? "#E63946" : "#457B9D";
-  ctx.font="1000 42px Inter, sans-serif";
-  ctx.fillText(`${winner.c.name.toUpperCase()} VICTORIOUS!`,canvas.width/2,canvas.height/2-8);
-  ctx.fillStyle="#D8E2DC";
-  ctx.font="800 14px SFMono-Regular,Consolas,monospace";
-  ctx.fillText(`// ${loser.c.name} aura signature terminated //`,canvas.width/2,canvas.height/2+25);
-  ctx.restore();
-}
-
-function loop(now){
-  if(!running) return;
-  const dt=Math.min(.025,(now-lastTime)/1000 || .016);
-  lastTime=now;
-
-  for(const ball of balls) updateBall(ball,dt);
-
-  // Pairwise collision. With two balls this is one exact elastic solve.
-  resolveCollision(balls[0],balls[1]);
-  updateParticles(dt);
-
-  drawArenaBackground();
-  drawParticles();
-  balls.forEach(b=>drawBall(b,now));
-  drawCenterHUD();
-
-  const dead=balls.find(b=>b.hp<=0);
-  if(dead){
-    const winner=balls.find(b=>b!==dead);
-    running=false;
-    battleEnded=true;
-    drawVictory(dead,winner);
-    statusChip.textContent=`${winner.c.name.toUpperCase()} WINS`;
-    fightBtn.disabled=false;
-    addLog(`>> ${winner.c.name} wins the arena.`, winner.player===1?"p1":"p2");
-    return;
-  }
-
-  raf=requestAnimationFrame(loop);
-}
-
-fightBtn.addEventListener("click",startBattle);
-resetBtn.addEventListener("click",resetBattle);
-
-renderCharacters();
-resetBattle();
+function drawVictory(loser,winner){drawArenaBackground();drawParticles();ctx.fillStyle="rgba(10,8,16,.72)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.textAlign="center";ctx.fillStyle=winner.player===1?"#E63946":"#457B9D";ctx.font="1000 42px Inter,sans-serif";ctx.fillText(`${winner.c.name.toUpperCase()} VICTORIOUS!`,canvas.width/2,canvas.height/2-8);ctx.fillStyle="#D8E2DC";ctx.font="800 14px SFMono-Regular,Consolas,monospace";ctx.fillText(`// ${loser.c.name} aura signature terminated //`,canvas.width/2,canvas.height/2+25)}
+function loop(now){if(!running)return;const dt=Math.min(.025,(now-lastTime)/1000||.016);lastTime=now;for(const b of balls)updateBall(b,dt);if(balls.filter(b=>!b.clone&&!b.dead).length>=2)resolveCollision(balls.find(b=>b.player===1&&!b.clone),balls.find(b=>b.player===2&&!b.clone)); for(const c of balls.filter(b=>b.clone&&!b.dead)){const e=balls.find(b=>b.player!==c.player&&!b.dead&&!b.clone);if(e)resolveCollision(c,e);} updateSpecialSystems(dt);updateParticles(dt);drawArenaBackground();mines.forEach(drawMine);barriers.forEach(drawBarrier);projectiles.forEach(drawProjectile);drawParticles();drawChains();balls.filter(b=>!b.dead).forEach(b=>drawBall(b,now));drawHUD();const dead=balls.find(b=>!b.clone&&b.hp<=0);if(dead){const winner=balls.find(b=>!b.clone&&b!==dead);running=false;battleEnded=true;drawVictory(dead,winner);statusChip.textContent=`${winner.c.name.toUpperCase()} WINS`;fightBtn.disabled=false;addLog(`>> ${winner.c.name} wins the arena.`,winner.player===1?"p1":"p2");return}raf=requestAnimationFrame(loop)}
+fightBtn.addEventListener("click",startBattle);resetBtn.addEventListener("click",resetBattle);renderCharacters();resetBattle();
 </script>
 </body>
 </html>
