@@ -305,7 +305,7 @@ const appEl=document.querySelector(".app");
 const charactersEl=document.getElementById("characters"),fightBtn=document.getElementById("fightBtn"),resetBtn=document.getElementById("resetBtn"),logEl=document.getElementById("combatLog"),statusChip=document.getElementById("statusChip");
 let selections={p1:null,p2:null},balls=[],particles=[],mines=[],barriers=[],projectiles=[],chains=[],trail=[],running=false,battleEnded=false,raf=0,lastTime=0,fightStart=0,nextId=1;
 let p1WinChance=.50,lastStriker=null,wallResolutionCooldown=0,flashFrames=0,audioCtx=null;
-let gameMode="1v1",teams={p1:[],p2:[]},ffaSelections=[],scores={p1:0,p2:0},roundNo=0,attackEffects=[];
+let gameMode="1v1",teams={p1:[],p2:[]},ffaSelections=[],scores={p1:0,p2:0},roundNo=0,attackEffects=[],teamPos={p1:0,p2:0};
 let draft={p1:[],p2:[],pick1:null,pick2:null,stage:0};
 let smokeLines=[],threadTethers=[],rafflesiaFields=[],skillHunterFish=[],skillHunterCloths=[],warpGates=[],painSuns=[],threadTraps=[],puppets=[];
 
@@ -321,6 +321,37 @@ function selectCharacter(i){if(running)return;if(gameMode==="1v1"){if(selections
 else if(gameMode==="3v3"){if(teams.p1.includes(i)){teams.p1=teams.p1.filter(x=>x!==i)}else if(teams.p2.includes(i)){teams.p2=teams.p2.filter(x=>x!==i)}else if(teams.p1.length<3)teams.p1.push(i);else if(teams.p2.length<3)teams.p2.push(i);else teams.p2[2]=i}
 else if(gameMode==="ffa"){if(ffaSelections.includes(i))ffaSelections=ffaSelections.filter(x=>x!==i);else if(ffaSelections.length<4)ffaSelections.push(i)}
 updateSelectionUI()}
+function updatePlayerPanel(side,index){
+  const prefix=side==='p1'?'p1':'p2';
+  const title=document.getElementById(prefix+'Name');
+  const type=document.getElementById(prefix+'Type');
+  const hpFill=document.getElementById(prefix+'HpFill');
+  const hpText=document.getElementById(prefix+'HpText');
+  if(!title||!type||!hpFill||!hpText)return;
+  if(gameMode==='1v1'){
+    const c=index!==null&&index!==undefined?CHARACTERS[index]:null;
+    title.textContent=c?c.name:'Awaiting Selection';
+    type.textContent=c?`${c.type} · HP ${c.maxHp} · ATK ${c.atk} · SPD ${c.speed}`:'Choose a character.';
+    hpFill.style.width=c?'100%':'0%';
+    hpText.textContent=c?`${c.maxHp} / ${c.maxHp}`:'— / —';
+    return;
+  }
+  if(gameMode==='3v3'){
+    const arr=side==='p1'?teams.p1:teams.p2;
+    const names=arr.map(i=>CHARACTERS[i].name);
+    title.textContent=names.length?names.join(' · '):'Awaiting Team';
+    type.textContent=`${side.toUpperCase()} TEAM · ${arr.length}/3 selected`;
+    hpFill.style.width=arr.length?'100%':'0%';
+    hpText.textContent=arr.length?`${arr.length} / 3 FIGHTERS`:'— / —';
+    return;
+  }
+  const n=ffaSelections.length;
+  const names=ffaSelections.map(i=>CHARACTERS[i].name);
+  title.textContent=side==='p1'?'FREE FOR ALL':'FOUR-WAY ARENA';
+  type.textContent=names.length?names.join(' · '):'Choose four fighters.';
+  hpFill.style.width=n?'100%':'0%';
+  hpText.textContent=`${n} / 4 FIGHTERS`;
+}
 function updateSelectionUI(){
   renderCharacters();
   updatePlayerPanel("p1",selections.p1);
@@ -487,7 +518,7 @@ function renderDraftRoom(){
   if(draft.stage===0){draftPhase.textContent="PLAYER 1 // PRIVATE VIEW";draftPrivate.innerHTML='<div class="draft-pass"><b>PLAYER 1, THIS IS YOUR HAND.</b><br>Choose exactly one card. Player 2 cannot see these cards after you pass.</div>';draft.p1.forEach(i=>addDraftCard(i,"p1"));}
   else if(draft.stage===1){draftPhase.textContent="PASS DEVICE // PLAYER 2";draftPrivate.innerHTML='<div class="draft-pass"><b>PLAYER 1 PICK LOCKED.</b><br>Now hand the device to Player 2. Player 2 will only see their own three cards.</div>';draftHand.innerHTML='<button type="button" id="passToP2" class="secondary" style="grid-column:1/-1">PLAYER 2: SHOW MY HAND</button>';document.getElementById("passToP2").onclick=()=>{draft.stage=2;renderDraftRoom()};}
   else if(draft.stage===2){draftPhase.textContent="PLAYER 2 // PRIVATE VIEW";draftPrivate.innerHTML='<div class="draft-pass"><b>PLAYER 2, THIS IS YOUR HAND.</b><br>Player 1\'s cards are completely hidden.</div>';draft.p2.forEach(i=>addDraftCard(i,"p2"));}
-  else if(draft.stage===3){draftPhase.textContent="DRAFT COMPLETE // HIDDEN PICKS";draftPrivate.innerHTML='<div class="draft-pass"><b>BOTH PICKS ARE LOCKED.</b><br>The selected Nen abilities remain secret until the simulation begins.</div>';draftHand.innerHTML='<button type="button" id="loadDraft" style="grid-column:1/-1">LOAD SECRET PICKS INTO 1v1</button>';document.getElementById("loadDraft").onclick=()=>{selections={p1:draft.pick1,p2:draft.pick2};draftRoom.classList.remove("show");setMode("1v1");updateSelectionUI();addLog(">> Secret Draft loaded. P1 and P2 picks remain concealed until FIGHT.");};}
+  else if(draft.stage===3){draftPhase.textContent="DRAFT COMPLETE // HIDDEN PICKS";draftPrivate.innerHTML='<div class="draft-pass"><b>BOTH PICKS ARE LOCKED.</b><br>The selected Nen abilities remain secret until the simulation begins.</div>';draftHand.innerHTML='<button type="button" id="loadDraft" style="grid-column:1/-1">LOAD SECRET PICKS INTO 1v1</button>';document.getElementById("loadDraft").onclick=()=>{setMode("1v1");selections={p1:draft.pick1,p2:draft.pick2};draftRoom.classList.remove("show");updateSelectionUI();addLog(">> Secret Draft loaded. P1 and P2 picks remain concealed until FIGHT.");};}
 }
 function addDraftCard(i,side){const c=CHARACTERS[i],d=document.createElement("button");d.type="button";d.className="draft-card2";const symbols=["✦","◈","☯","⚡","◉","◇"];d.innerHTML=`<div class="card-symbol">${symbols[i%symbols.length]}</div><div class="card-name">${c.name}</div><div class="card-type">${c.type} // HATSU</div><div class="card-desc">${FULL_ABILITIES[c.name]||c.passive}</div><div class="card-stats"><span>HP ${c.maxHp}</span><span>ATK ${c.atk}</span><span>SPD ${c.speed}</span></div>`;d.onclick=()=>{if(side==="p1"){draft.pick1=i;draft.stage=1}else{draft.pick2=i;draft.stage=3}renderDraftRoom()};draftHand.appendChild(d)}
 document.getElementById("openDraftBtn").onclick=openDraft;document.getElementById("closeDraftBtn").onclick=()=>draftRoom.classList.remove("show");
