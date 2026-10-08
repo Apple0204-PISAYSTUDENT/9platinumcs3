@@ -72,14 +72,17 @@
     ❄️ Quarter 2 
   </h4>
 
+  <a href="q2/Study Guide 8 (activity 1) – Encapsulation.md.html" style="background-color: #D8E2DC !important; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
+    <h3 style="margin: 0; color: #1D3557 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🧬 Activity 1</h3>
+    <p style="margin: 4px 0 0 0; color: #1D3557 !important; font-size: 14px;">Intergrating Encapsulation Activity</p>
+  </a>
+
   <a href="HxHBall.html" style="background-color: #D8E2DC !important; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
     <h3 style="margin: 0; color: #1D3557 !important; font-size: 16px; font-weight: bold; border-bottom: none !important;">🎮 Heavens Arena</h3>
     <p style="margin: 4px 0 0 0; color: #1D3557 !important; font-size: 14px;">A Hunter x Hunter Game</p>
   </a>
 
-  <div style="font-style: italic; color: #457B9D; padding: 10px 14px; font-size: 14px;">
-    Upcoming works and activities will be posted here soon! 
-  </div>
+
   
 
   <p style="text-align: center; margin-top: 40px; font-size: 13px; color: #457B9D;">
