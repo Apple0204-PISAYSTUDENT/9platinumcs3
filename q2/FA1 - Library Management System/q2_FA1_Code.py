@@ -15,14 +15,14 @@ class Publication:
         self.__title = title
         self.__author = author
 
-    # Getters
+    # Getters who claimed and inputted information and read it
     def get_title(self):
         return self.__title
 
     def get_author(self):
         return self.__author
 
-    # Setters
+    # Setters who will take inputted information and apply it to variables under specific conditions
     def set_title(self, title):
         if isinstance(title, str) and title.strip():
             self.__title = title
@@ -52,7 +52,7 @@ class Book(Publication):
         return self.__number_of_pages
 
     def set_number_of_pages(self, number_of_pages):
-        # Page counts must be positive integers.
+        # Page counts must be positive integers. Negative counts are rejected 
         if (
             isinstance(number_of_pages, int)
             and not isinstance(number_of_pages, bool)
