@@ -4,7 +4,7 @@
 **Subject:** Computer Science 3  
 **Quarter:** Quarter 2  
 **Assessment:** Formative Assessment No. 1  
-**Python File:** `sg9_inheritance.py`
+**Python File:** `q2_FA1_Code.py`
 
 ## I. Introduction
 
