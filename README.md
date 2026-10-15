@@ -81,12 +81,12 @@
   
 <div style="background-color: #D8E2DC; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
     <h3 style="margin: 0; color: #1D3557; font-size: 16px; font-weight: bold;">
-        <a href="q2/FA1 - Library Management System/FA1 - Library Management System.md" style="color: #1D3557; text-decoration: none;">📚 Formative Assessment 1</a>
+        <a href="q2/FA1 - Library Management System/FA1 - Library Management System.html" style="color: #1D3557; text-decoration: none;">📚 Formative Assessment 1</a>
     </h3>
     <p style="margin: 4px 0 8px 0; color: #1D3557; font-size: 14px;">Library Management System • Inheritance</p>
     <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/FA1%20-%20Library%20Management%20System/q2_FA1_Code.py" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Code</a>
     <br>
-    <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/FA1%20-%20Library%20Management%20System/FA1%20-%20Library%20Management%20System.md" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Documentation</a>
+    <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/FA1%20-%20Library%20Management%20System/q2_FA1_CodeTestRun.png" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Documentation</a>
 </div>
 
 
