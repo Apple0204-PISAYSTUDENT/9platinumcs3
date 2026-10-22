@@ -3,31 +3,34 @@
 **Section:** 9 - Platinum  
 **Name:** Ace Philip Lee T. Mendoza  
 **Date:** October 22, 2026
-**Python File:** `Zoo Management System_file.py`
+
+**Python File:** `Zoo Management System_markdownfile.py`
 
 
 ## The Python Code
 
 ```python
-# Parent class
+# Parent class of the other classes
 class Animal:
-    def __init__(self, name):
+    def __init__(self, name): #the name, which is an attribute of animals
         self.name = name
 
-    def eat(self):
-        print(self.name, "eats.")
+    def eat(self): 
+        print(self.name, "eats.") #Some methods and functions it has, like eating and making noise
 
     def make_sound(self):
         print(self.name, "makes a sound.")
 
 
-# Child class: Lion
+# Child class: Lion, 
 class Lion(Animal):
     def eat(self):
-        print(self.name, "eats fresh meat.")
+        print(self.name, "eats fresh meat.") #takes the attribute of name and uses the animal parent class original  
+                                             #function, and places it in this text that will pop up, same applies to
+                                             #everything else.
 
     def make_sound(self):
-        print(self.name, "roars loudly!")
+        print(self.name, "roars loudly!") #the sound, takes the name, text, print, so on, like the eat function
 
 
 # Child class: Elephant
@@ -48,15 +51,15 @@ class Monkey(Animal):
         print(self.name, "chatters!")
 
 
-# Create objects
+# Create objects/animals with their assigned attributes or name
 lion = Lion("Simba")
-elephant = Elephant("Dumbo")
+elephant = Elephant("Dumbo") #the animals
 monkey = Monkey("George")
 
-# Call the methods using a for loop
+# Call the methods using a for loop so that all animals use the animal classes methods
 animals = [lion, elephant, monkey]
 
-for animal in animals:
+for animal in animals: #Cycles through the list of animals
     animal.make_sound()
     animal.eat()
     print("-----")
@@ -74,6 +77,7 @@ Dumbo eats grass and fruits.
 George chatters!
 George eats bananas.
 -----
+#Yay
 ```
 
 ## Explanation
