@@ -91,7 +91,7 @@
 
 <div style="background-color: #D8E2DC; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
     <h3 style="margin: 0; color: #1D3557; font-size: 16px; font-weight: bold;">
-        <a href="q2/Zoo Management System/Zoo Management System_markdownfile.html" style="color: #1D3557; text-decoration: none;">🐢 Activity 2</a>
+        <a href="q2/Zoo%20Management%20System/Zoo%20Management%20System_markdownfile.html" style="color: #1D3557; text-decoration: none;">🐢 Activity 2</a>
     </h3>
     <p style="margin: 4px 0 8px 0; color: #1D3557; font-size: 14px;">Applying Method Overriding</p>
     <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Zoo%20Management%20System/Zoo%20Management%20System_codefile.py" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Code</a>
