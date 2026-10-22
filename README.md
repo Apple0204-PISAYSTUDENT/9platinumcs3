@@ -89,6 +89,16 @@
     <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/FA1%20-%20Library%20Management%20System/q2_FA1_CodeTestRun.png" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Documentation</a>
 </div>
 
+<div style="background-color: #D8E2DC; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+    <h3 style="margin: 0; color: #1D3557; font-size: 16px; font-weight: bold;">
+        <a href="q2/Zoo Management System/Zoo Management System_file.html" style="color: #1D3557; text-decoration: none;">🐢 Activity 2</a>
+    </h3>
+    <p style="margin: 4px 0 8px 0; color: #1D3557; font-size: 14px;">Applying Method Overriding</p>
+    <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Zoo%20Management%20System/Zoo%20Management%20System_file.py" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Code</a>
+    <br>
+    <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Zoo%20Management%20System/Zoo%20Management%20System_CodeTestRun.png" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Documentation</a>
+</div>
+
 
 
   <a href="HxHBall.html" style="background-color: #D8E2DC !important; border-left: 5px solid #1D3557; border-radius: 8px; padding: 14px; text-decoration: none; display: block; margin-bottom: 12px;">
