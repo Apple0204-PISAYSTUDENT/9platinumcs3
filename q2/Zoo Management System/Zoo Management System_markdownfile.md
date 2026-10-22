@@ -62,7 +62,7 @@ animals = [lion, elephant, monkey]
 for animal in animals: #Cycles through the list of animals
     animal.make_sound()
     animal.eat()
-    print("-----")
+    print("-----") #yes, tapos na, woohooh
 ```
 
 ## Expected Output
@@ -77,7 +77,6 @@ Dumbo eats grass and fruits.
 George chatters!
 George eats bananas.
 -----
-#Yay
 ```
 
 ## Explanation
