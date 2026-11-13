@@ -104,7 +104,7 @@
         <a href="q2/Polymorphism_Activity 1/Polymorphism_Activity 1.html" style="color: #1D3557; text-decoration: none;">🧬 Activity 3 - Polymorphism Part 1</a>
     </h3>
     <p style="margin: 4px 0 8px 0; color: #1D3557; font-size: 14px;">Analysis and Observation of Polymorphism</p>
-    <a href="github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Polymorphism_Activity%201/Polymorphism_Activity%201.py" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Code</a>
+    <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Polymorphism_Activity%201/Polymorphism_Activity%201.py" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Code</a>
     <br>
     <a href="https://github.com/Apple0204-PISAYSTUDENT/9platinumcs3/blob/main/q2/Polymorphism_Activity%201/Polymorphism_Activity%201_CodeTestRun.png" target="_blank" style="color: #1D3557; font-size: 14px; font-weight: bold; text-decoration: underline;">Linky to Documentation</a>
 </div>
